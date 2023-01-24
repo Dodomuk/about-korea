@@ -1,12 +1,15 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import './App.css'
+import { BrowserRouter } from 'react-router-dom'
+import { sgisJavascriptApi } from './module/SgisModule'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <div className="App">
+      <BrowserRouter>
       <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src="/vite.svg" className="logo" alt="Vite logo" />
@@ -23,10 +26,19 @@ function App() {
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
+        </div>
+        <div className="card">
+        <button onClick={async () => await sgisJavascriptApi()}>
+          sgis api 발급
+        </button>
+        <p>
+          Edit <code>src/App.tsx</code> and save to test HMR
+        </p>
       </div>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
-      </p>
+        </p>
+        </BrowserRouter>
     </div>
   )
 }
