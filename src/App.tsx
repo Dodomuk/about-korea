@@ -1,11 +1,30 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import './App.css'
 import { BrowserRouter } from 'react-router-dom'
-import { sgisJavascriptApi } from './module/SgisModule'
+import axios from "axios";
+import { isFormElement } from 'react-router-dom/dist/dom';
 
-function App() {
+function App(){
   const [count, setCount] = useState(0)
+  const [isApiCall, setIsApiCall] = useState(false)
+
+  useEffect(() => { 
+    if (isApiCall) { 
+      console.log('이미 한번 호출함');
+    } else{
+    axios.get(`${import.meta.env.VITE_SGIS_URL}/OpenAPI3/auth/authentication.json`, {
+      params: {
+        consumer_key: import.meta.env.VITE_SGIS_SERVICE_ID,
+        consumer_secret: import.meta.env.VITE_SGIS_API_KEY
+      }
+    }).then((response) => { 
+      console.log('응답부', response);
+      setCount(100);
+      setIsApiCall(true);
+    })
+  }
+  });
 
   return (
     <div className="App">
@@ -20,21 +39,14 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
+          <button onClick={() => setCount((count) => count + 1)}>
+          sgis api 발급< br/>
           count is {count}
         </button>
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
         </div>
-        <div className="card">
-        <button onClick={async () => await sgisJavascriptApi()}>
-          sgis api 발급
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
         </p>
