@@ -26,15 +26,14 @@ function Main() {
           setIsApiCall(true);
           setKey(response.data.result.accessToken);
       })
-    }
-    });
-      
+      }
+    });      
 
     return (
             <div>
           <button onClick={() => setCount((count) => count + 1)}>
                 sgis api 발급 AccessKey : {key}< br/>
-          count is {count}
+                count is {count}
                 </button>
                 </div>
     )
