@@ -1,12 +1,24 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { useRecoilValue } from 'recoil';
-import { accessKey } from '../store/SgisStore';
+import { useRecoilState, useRecoilValue } from 'recoil';
+import { getAccessKey } from '../store/SgisStore';
 
 function Main() {
-  const key = useRecoilValue(accessKey);
+  const [key, setKey] = useState('');
 
-  return <div>sgis api 발급 AccessKey : {key}</div>;
+  useEffect(() => {
+    isApiCall();
+  });
+
+  async function isApiCall() {
+    if (!key) {
+      const responseKey = await getAccessKey();
+      console.log('응답', responseKey);
+      setKey(responseKey);
+    }
+  }
+
+  return <div>{key}</div>;
 }
 
 export default Main;
