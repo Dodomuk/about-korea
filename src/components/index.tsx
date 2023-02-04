@@ -13,7 +13,6 @@ function Main() {
   async function isApiCall() {
     if (!key) {
       const responseKey = await getAccessKey();
-      console.log('응답', responseKey);
       setKey(responseKey);
     }
   }
