@@ -4,7 +4,7 @@ export async function getAccessKey() {
   try {
     const res = await axios
       .get(
-        `${import.meta.env.VITE_SGIS_URL}/OpenAPI3/auth/authentication.json`,
+        `/api/OpenAPI3/auth/authentication.json`,
         {
           params: {
             consumer_key: import.meta.env.VITE_SGIS_SERVICE_ID,
