@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { useRecoilState, useRecoilValue } from 'recoil';
 import { getAccessKey } from '../store/SgisStore';
 
 function Main() {
