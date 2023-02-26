@@ -1,22 +1,42 @@
-import axios from 'axios';
-import { useEffect, useState } from 'react';
-import { getAccessKey } from '../store/SgisStore';
+import { useEffect } from 'react';
+import {
+  RecoilValueReadOnly,
+  useRecoilState,
+  useRecoilValue,
+  useRecoilValueLoadable,
+} from 'recoil';
+import { getAccessKey } from '../module/SgisModule';
+import { getKey } from '../selector/sgisSelector';
+import { keyState } from '../store/SgisStore';
 
-function Main() {
-  const [key, setKey] = useState('');
+const Main = () => {
+  const [key, setKey] = useRecoilState(keyState);
 
-  useEffect(() => {
-    isApiCall();
-  });
+  const responseKey = useRecoilValueLoadable(getKey);
 
-  async function isApiCall() {
-    if (!key) {
-      const responseKey = await getAccessKey();
-      setKey(responseKey);
-    }
+  function getAccess() {
+    console.log(responseKey);
+    // setKey(responseKey);
   }
+  // const useApiCall = () => {
+  //   console.log('아가키', useRecoilValue(getKey));
+  //   // const responseKey = useRecoilValue(getKey);
+  //   // setKey(responseKey);
+  //   // const responseKey = useRecoilValueLoadable(getKey);
+  //   // console.log('recoil values>> ', responseKey);
+  //   // switch (responseKey.state) {
+  //   //   case 'hasValue':
+  //   //     setKey(responseKey.contents);
+  //   //     break;
+  //   //   case 'hasError':
+  //   //     throw responseKey.contents;
+  //   // }
+  // };
 
-  return <div>{key}</div>;
-}
-
+  return (
+    <div>
+      <div onClick={getAccess}>{key}</div>
+    </div>
+  );
+};
 export default Main;
