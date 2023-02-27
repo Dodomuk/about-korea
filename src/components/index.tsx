@@ -6,7 +6,7 @@ import {
   useRecoilValueLoadable,
 } from 'recoil';
 import { getAccessKey } from '../module/SgisModule';
-import { getKey } from '../selector/sgisSelector';
+import { getKey } from '../selector/SgisSelector';
 import { keyState } from '../store/SgisStore';
 
 const Main = () => {
@@ -16,7 +16,13 @@ const Main = () => {
 
   function getAccess() {
     console.log(responseKey);
-    // setKey(responseKey);
+    switch (responseKey.state) {
+      case 'hasValue':
+        setKey(responseKey.contents);
+        break;
+      case 'hasError':
+        throw responseKey.contents;
+    }
   }
   // const useApiCall = () => {
   //   console.log('아가키', useRecoilValue(getKey));
@@ -24,13 +30,13 @@ const Main = () => {
   //   // setKey(responseKey);
   //   // const responseKey = useRecoilValueLoadable(getKey);
   //   // console.log('recoil values>> ', responseKey);
-  //   // switch (responseKey.state) {
-  //   //   case 'hasValue':
-  //   //     setKey(responseKey.contents);
-  //   //     break;
-  //   //   case 'hasError':
-  //   //     throw responseKey.contents;
-  //   // }
+  // switch (responseKey.state) {
+  //   case 'hasValue':
+  //     setKey(responseKey.contents);
+  //     break;
+  //   case 'hasError':
+  //     throw responseKey.contents;
+  // }
   // };
 
   return (
