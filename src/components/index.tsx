@@ -1,11 +1,4 @@
-import { useEffect } from 'react';
-import {
-  RecoilValueReadOnly,
-  useRecoilState,
-  useRecoilValue,
-  useRecoilValueLoadable,
-} from 'recoil';
-import { getAccessKey } from '../module/SgisModule';
+import { useRecoilState, useRecoilValueLoadable } from 'recoil';
 import { getKey } from '../selector/SgisSelector';
 import { keyState } from '../store/SgisStore';
 
