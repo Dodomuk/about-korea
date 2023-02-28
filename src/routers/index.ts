@@ -7,6 +7,6 @@ import Main from '../components/index';
 export const routes = createBrowserRouter([
   {
     path: '/',
-    element: <Main />,
+    element: Main, // (대만 후 처리)
   },
 ]);
