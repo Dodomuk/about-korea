@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { selector } from 'recoil';
 import { getAccessKey } from '../module/SgisModule';
 
