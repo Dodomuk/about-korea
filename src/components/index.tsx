@@ -1,3 +1,4 @@
+import { Outlet, useNavigate } from 'react-router-dom';
 import { useRecoilState, useRecoilValueLoadable } from 'recoil';
 import { getKey } from '../selector/SgisSelector';
 import { keyState } from '../store/SgisStore';
@@ -6,6 +7,8 @@ const Main = () => {
   const [key, setKey] = useRecoilState(keyState);
 
   const responseKey = useRecoilValueLoadable(getKey);
+
+  const navigate = useNavigate();
 
   function getAccess() {
     console.log(responseKey);
@@ -32,9 +35,14 @@ const Main = () => {
   // }
   // };
 
+  function moveErrorPage() {
+    navigate('/error');
+  }
+
   return (
     <div>
       <div onClick={getAccess}>{key}</div>
+      <div onClick={moveErrorPage}>errorTest</div>
     </div>
   );
 };

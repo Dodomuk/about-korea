@@ -1,9 +1,14 @@
+import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
+import { Outlet, RouterProvider } from 'react-router-dom';
+import { RecoilRoot } from 'recoil';
 import './index.css';
+import { routes } from './routers';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  // <React> //개발 모드 검사 도구
-  <App />,
-  //  </React.StrictMode>,
+  // <React.StrictMode>
+  <RecoilRoot>
+    <RouterProvider router={routes} />
+  </RecoilRoot>,
+  // </React.StrictMode>,
 );

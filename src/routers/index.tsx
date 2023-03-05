@@ -1,15 +1,19 @@
-import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
-import { isBooleanObject } from 'util/types';
 
+import App from '../App';
 import Main from '../components/index';
 // const main = React.lazy(() => import('../components/index'));
+
+import Error from '../components/error/index';
 
 export const routes = createBrowserRouter([
   {
     path: '/',
-    element: Main, // (대만 후 처리)
+    element: <App />,
+    errorElement: <Error />,
+  },
+  {
+    path: '/error',
+    element: <Error />,
   },
 ]);
-dodomuck = babo 3 / 2
-}

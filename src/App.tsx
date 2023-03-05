@@ -12,12 +12,7 @@ function App() {
 
   return (
     <div className="App">
-      <BrowserRouter>
-        <RecoilRoot>
-          <RouterProvider router={routes} />
-          <Main />
-        </RecoilRoot>
-      </BrowserRouter>
+      <Main />
     </div>
   );
 }
