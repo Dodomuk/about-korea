@@ -1,19 +1,17 @@
 import { selectorFamily } from 'recoil';
-import { DemographicsReq, DemographicsRes } from '../interface/Census';
-
 import { getDemographicsInfo } from '../module/CensusModule';
+import { populationStatistics } from '../store/CensusStore';
 
-interface Param extends DemographicsReq {
-  [key: string]: any;
-}
-
-const getDemographics = selectorFamily<DemographicsRes, Param>({
+const getDemographics = selectorFamily({
   key: 'getDemographics',
-  get: (req) => async () => {
-    // return async () => {
-    return await getDemographicsInfo(req);
-    // };
+  get:
+    (req) =>
+    ({ get }) => {
+      return getDemographicsInfo(req);
+    },
+  set: ({ set }, newValue) => {
+    set(populationStatistics, newValue);
   },
 });
 
-export default { getDemographics };
+export { getDemographics };

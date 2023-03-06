@@ -1,6 +1,8 @@
-import { Outlet, useNavigate } from 'react-router-dom';
-import { useRecoilState, useRecoilValueLoadable } from 'recoil';
+import { useNavigate } from 'react-router-dom';
+import { useRecoilState, useRecoilValue, useRecoilValueLoadable } from 'recoil';
 import { getKey } from '../selector/SgisSelector';
+import { getDemographics } from '../selector/CensusSelector';
+import { populationStatistics } from '../store/CensusStore';
 import { keyState } from '../store/SgisStore';
 
 const Main = () => {
@@ -9,7 +11,8 @@ const Main = () => {
   const responseKey = useRecoilValueLoadable(getKey);
 
   // 인구통계자료
-  const [population, setPopulation] = useRecoilState();
+  const [population, setPopulation] = useRecoilState(populationStatistics);
+  const res = useRecoilValueLoadable(getDemographics({}));
 
   // FIXME : (전역화 고려)
   const navigate = useNavigate();
@@ -27,16 +30,16 @@ const Main = () => {
   function moveErrorPage() {
     navigate('/error');
   }
-  
-  function getPopulationStatistics() { 
-    switch
+
+  function getPopulationStatistics() {
+    setPopulation(res);
   }
 
   return (
     <div>
       <div onClick={getAccess}>{key}</div>
       <div onClick={moveErrorPage}>errorTest</div>
-      <div onClic={get}>api 정보 받아오기 test</div>
+      <div onClick={getPopulationStatistics}>api 정보 받아오기 test</div>
     </div>
   );
 };
