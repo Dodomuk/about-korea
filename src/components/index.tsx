@@ -4,6 +4,7 @@ import { getKey } from '../selector/SgisSelector';
 import { getDemographics } from '../selector/CensusSelector';
 import { populationStatistics } from '../store/CensusStore';
 import { keyState } from '../store/SgisStore';
+import dayjs from 'dayjs';
 
 const Main = () => {
   // SGIS API 키
@@ -12,7 +13,12 @@ const Main = () => {
 
   // 인구통계자료
   const [population, setPopulation] = useRecoilState(populationStatistics);
-  // const res = useRecoilValueLoadable(getDemographics({}));
+  const demographicsRes = useRecoilValueLoadable(
+    getDemographics({
+      accessToken: key,
+      year: Number(dayjs().format('YYYY')) - 2,
+    }),
+  );
 
   // FIXME : (전역화 고려)
   const navigate = useNavigate();
@@ -32,21 +38,14 @@ const Main = () => {
   }
 
   function getPopulationStatistics() {
-    setPopulation(res);
-  }
-
-  function apiTextInfo() {
-    if (key === '키를 발급 받으려면 클릭!') {
-      return null
-    }
-    return <div onClick={getPopulationStatistics}>api 정보 받아오기 test</div>
+    setPopulation(demographicsRes);
   }
 
   return (
     <>
       <div onClick={getAccess}>{key}</div>
       <div onClick={moveErrorPage}>errorTest</div>
-      {{ apiTextInfo }}
+      <div onClick={getPopulationStatistics}>api 정보 받아오기 test</div>
     </>
   );
 };
