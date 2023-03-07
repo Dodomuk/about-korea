@@ -1,17 +1,19 @@
+import { AxiosResponse } from 'axios';
 import { selectorFamily } from 'recoil';
+import { DemographicsReq } from '../interface/Census';
 import { getDemographicsInfo } from '../module/CensusModule';
 import { populationStatistics } from '../store/CensusStore';
 
-const getDemographics = selectorFamily({
+const getDemographics = selectorFamily<AxiosResponse, DemographicsReq>({
   key: 'getDemographics',
   get:
-    (req) =>
-    ({ get }) => {
-      return getDemographicsInfo(req);
-    },
-  set: ({ set }, newValue) => {
-    set(populationStatistics, newValue);
-  },
+    (req: DemographicsReq) =>
+      async () => {
+        return await getDemographicsInfo(req);
+      },
+  // set: ({ set }, newValue) => {
+  //   set(populationStatistics, newValue);
+  // },
 });
 
 export { getDemographics };

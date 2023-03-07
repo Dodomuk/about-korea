@@ -1,4 +1,4 @@
-export interface DemographicsReq {
+export type DemographicsReq = {
   accessToken: string; //액세스토큰
   year: number; //기준년도
   gender?: number; //성별(default: 0)
@@ -9,7 +9,7 @@ export interface DemographicsReq {
   mrg_state?: number; //혼인상태( * 2010년까지 제공, 2015년도는 제공하지 않음)
 }
 
-export interface DemographicsRes {
+export type DemographicsRes = {
   adm_cd: string; //설명
   adm_nm: string; //행정구역명
   population: string; //인구수
