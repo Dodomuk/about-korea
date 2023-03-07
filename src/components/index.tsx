@@ -12,7 +12,7 @@ const Main = () => {
 
   // 인구통계자료
   const [population, setPopulation] = useRecoilState(populationStatistics);
-  const res = useRecoilValueLoadable(getDemographics({}));
+  // const res = useRecoilValueLoadable(getDemographics({}));
 
   // FIXME : (전역화 고려)
   const navigate = useNavigate();
@@ -35,12 +35,19 @@ const Main = () => {
     setPopulation(res);
   }
 
+  function apiTextInfo() {
+    if (key === '키를 발급 받으려면 클릭!') {
+      return null
+    }
+    return <div onClick={getPopulationStatistics}>api 정보 받아오기 test</div>
+  }
+
   return (
-    <div>
+    <>
       <div onClick={getAccess}>{key}</div>
       <div onClick={moveErrorPage}>errorTest</div>
-      <div onClick={getPopulationStatistics}>api 정보 받아오기 test</div>
-    </div>
+      {{ apiTextInfo }}
+    </>
   );
 };
 export default Main;
