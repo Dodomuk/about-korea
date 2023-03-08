@@ -20,7 +20,7 @@ const Main = () => {
     }),
   );
 
-  const populationTest = population[0].population
+  const populationTest = '';
 
   // FIXME : (전역화 고려)
   const navigate = useNavigate();
@@ -40,14 +40,20 @@ const Main = () => {
   }
 
   function getPopulationStatistics() {
-    setPopulation(demographicsRes.contents);
+    switch (demographicsRes.state) {
+      case 'hasValue':
+        setPopulation(demographicsRes.contents.result[0].population);
+        break;
+      case 'hasError':
+        throw demographicsRes.errorOrThrow;
+    }
   }
 
   return (
     <>
       <div onClick={getAccess}>{key}</div>
       <div onClick={moveErrorPage}>errorTest</div>
-      <div onClick={getPopulationStatistics}>{populationTest}</div>
+      <div onClick={getPopulationStatistics}>{population}</div>
     </>
   );
 };

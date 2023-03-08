@@ -8,7 +8,7 @@ export async function getDemographicsInfo(param: DemographicsReq) {
       params: param,
     });
     console.debug('인구 조사 처리 >> ', result);
-    return result;
+    return result.data;
   } catch (error) {
     throw error;
   }
