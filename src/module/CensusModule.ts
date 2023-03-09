@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { DemographicsReq, DemographicsRes } from '../interface/Census';
+import { DemographicsReq } from '@interface/Census';
 
 export async function getDemographicsInfo(param: DemographicsReq) {
   try {

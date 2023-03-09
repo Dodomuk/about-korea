@@ -1,4 +1,4 @@
-import { HttpCommonStatus } from "./common";
+import { HttpCommonStatus } from '@interface/common';
 
 export type DemographicsReq = {
   accessToken: string; //액세스토큰
@@ -9,15 +9,15 @@ export type DemographicsReq = {
   age_type?: number; //연령타임
   edu_level?: number; //교육정도( * 2010년까지 제공, 2015년도는 제공하지 않음)
   mrg_state?: number; //혼인상태( * 2010년까지 제공, 2015년도는 제공하지 않음)
-}
+};
 
 export type DemographicsRes = {
-  result: DemograhicInfo[]
-} & HttpCommonStatus
+  result: DemograhicInfo[];
+} & HttpCommonStatus;
 
 export type DemograhicInfo = {
   adm_cd: string; //설명
   adm_nm: string; //행정구역명
   population: string; //인구수
   avg_age: number; //검색인구 평균나이
-} 
+};

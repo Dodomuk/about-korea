@@ -2,7 +2,7 @@ import { BrowserRouter, RouterProvider } from 'react-router-dom';
 import { RecoilRoot, RecoilEnv } from 'recoil';
 
 import { routes } from './routers/index';
-import Main from './components/index';
+import Main from '@components/index';
 
 import './App.css';
 

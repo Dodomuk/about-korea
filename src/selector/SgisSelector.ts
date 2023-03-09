@@ -1,11 +1,16 @@
-import { selector } from 'recoil';
-import { getAccessKey } from '../module/SgisModule';
+import { atom, selector } from 'recoil';
+import { getAccessKey } from '@module/SgisModule';
 
 const getKey = selector({
-  key: 'getKey',
+  key: '',
   get: async ({ get }) => {
-    return getAccessKey();
+    return await getAccessKey();
   },
 });
 
-export { getKey };
+const accessKey = atom({
+  key: 'accessKey',
+  default: '',
+});
+
+export { getKey, accessKey };

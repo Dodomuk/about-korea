@@ -1,8 +1,8 @@
 import { AxiosResponse } from 'axios';
 import { selectorFamily } from 'recoil';
-import { DemographicsReq, DemographicsRes } from '../interface/Census';
-import { getDemographicsInfo } from '../module/CensusModule';
-import { populationStatistics } from '../store/CensusStore';
+import { DemographicsReq, DemographicsRes } from '@interface/Census';
+import { getDemographicsInfo } from '@module/CensusModule';
+import { populationStatistics } from '@store/CensusStore';
 
 const getDemographics = selectorFamily<DemographicsRes, DemographicsReq>({
   key: 'getDemographics',

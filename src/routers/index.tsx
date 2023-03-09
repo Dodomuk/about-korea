@@ -1,7 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 
 import App from '../App';
-import Main from '../components/index';
+import Main from '@components/index';
 // const main = React.lazy(() => import('../components/index'));
 
 import Error from '../components/error/index';
