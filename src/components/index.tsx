@@ -18,6 +18,7 @@ const Main = () => {
     navigate('/error');
   }
 
-  return <div>{stateComp()}</div>;
+  return <><div>{stateComp()}</div>
+    <div><button className="bg-red-100">버튼</button></div></>;
 };
 export default Main;
