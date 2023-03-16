@@ -2,29 +2,56 @@ import { useNavigate } from 'react-router-dom';
 import { useRecoilState, useRecoilValue } from 'recoil';
 
 import { accessKey, getKey } from '@selector/SgisSelector';
+
 import Population from '@components/chart/population';
+import SearchBox from '@components/main/searchBox';
+import { useEffect } from 'react';
+import { getAccessKey } from '@/module/SgisModule';
 
 const Main = () => {
-  const [key, setKey] = useRecoilState(accessKey);
-  const res = useRecoilValue(getKey);
+    const [key, setKey] = useRecoilState(accessKey);
 
-  function stateComp() {
-    return <Population accessKey={res} />;
-  }
+    useEffect(() => {
+        if (!key) {
+            getAccessKey().then((res) => {
+                setKey(res);
+            });
+        }
+    }, []);
 
-  // FIXME : (전역화 고려)
-  function moveErrorPage() {
-    const navigate = useNavigate();
-    navigate('/error');
-  }
+    function StateComp() {
+        if (key) {
+            return (
+                <>
+                    <Population accessKey={key} />
+                    <div>{/* <button className="px-4 bg-orange-400" onClick="">인구통계 검색 버튼(임시)</button> */}</div>
+                    <div>
+                        <SearchBox accessKey={key} />
+                    </div>
+                </>
+            );
+        } else {
+            return <></>;
+        }
+    }
 
-  return (
-    <>
-      <div>{stateComp()}</div>
-      <div>
-        <button className="px-4 bg-blue-100">버튼</button>
-      </div>
-    </>
-  );
+    // FIXME : (전역화 고려)
+    function moveErrorPage() {
+        const navigate = useNavigate();
+        navigate('/error');
+    }
+
+    function moveCensusSearchPage() {
+        const navigate = useNavigate();
+        navigate('/error');
+    }
+
+    return (
+        <>
+            <div>
+                <StateComp />
+            </div>
+        </>
+    );
 };
 export default Main;

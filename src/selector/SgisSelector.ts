@@ -1,6 +1,11 @@
 import { atom, selector } from 'recoil';
 import { getAccessKey } from '@module/SgisModule';
 
+const accessKey = atom({
+  key: 'accessKey',
+  default: '',
+});
+
 const getKey = selector({
   key: '',
   get: async ({ get }) => {
@@ -8,9 +13,9 @@ const getKey = selector({
   },
 });
 
-const accessKey = atom({
-  key: 'accessKey',
+const search = atom({
+  key: 'search',
   default: '',
 });
 
-export { getKey, accessKey };
+export { accessKey, getKey, search };

@@ -4,15 +4,22 @@ import { DemographicsReq, DemographicsRes } from '@interface/Census';
 import { getDemographicsInfo } from '@module/CensusModule';
 import { populationStatistics } from '@store/CensusStore';
 
-const getDemographics = selectorFamily<DemographicsRes, DemographicsReq>({
-  key: 'getDemographics',
-  get: (req: DemographicsReq) => async () => {
+// const getDemographics = selectorFamily<DemographicsRes, DemographicsReq>({
+//     key: 'getDemographics',
+//     get: (req: DemographicsReq) => async () => {
+//         console.log("누름")
+//         const res = await getDemographicsInfo(req);
+//         return res;
+//     }
+//     // set: ({ set }, newValue) => {
+//     //   set(populationStatistics, newValue);
+//     // },
+// });
+
+async function getDemographics(req: DemographicsReq) {
+    console.log('누름');
     const res = await getDemographicsInfo(req);
     return res;
-  },
-  // set: ({ set }, newValue) => {
-  //   set(populationStatistics, newValue);
-  // },
-});
+}
 
 export { getDemographics };

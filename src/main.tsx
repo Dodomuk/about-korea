@@ -4,11 +4,14 @@ import { Outlet, RouterProvider } from 'react-router-dom';
 import { RecoilRoot } from 'recoil';
 import './index.css';
 import { routes } from './routers';
+import { ThemeProvider } from '@material-tailwind/react';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  // <React.StrictMode>
-  <RecoilRoot>
-    <RouterProvider router={routes} />
-  </RecoilRoot>,
-  // </React.StrictMode>,
+    // <React.StrictMode>
+    <ThemeProvider>
+        <RecoilRoot>
+            <RouterProvider router={routes} />
+        </RecoilRoot>
+    </ThemeProvider>
+    // </React.StrictMode>,
 );
