@@ -5,11 +5,14 @@ import { useState } from 'react';
 import { search } from '@selector/SgisSelector';
 import { useRecoilState } from 'recoil';
 import { Button } from '@material-tailwind/react';
+import { createSearchParams, useNavigate } from 'react-router-dom';
 
 //text 검색창
 function TextFilter() {
+    const navigate = useNavigate();
     const [clicked, setClicked] = useState(false);
     const [searchText, setSearchText] = useRecoilState(search);
+    const [searchStat, setSearchStat] = useState('');
 
     let list = [{ id: 'none', title: '' }]; // 검색 조건과 일치하는 리스트
     let isVisible = false;
@@ -44,7 +47,6 @@ function TextFilter() {
     };
 
     if (searchText) {
-        isVisible = true;
         list = [];
         contentsList.map((data) => {
             list.push(
@@ -53,11 +55,28 @@ function TextFilter() {
                 })
             );
         });
+
+        if (list.length > 0) {
+            isVisible = true;
+        }
     }
 
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearchText(e.target.value);
     };
+
+    const onChangeStat = (stat: string) => {
+        setClicked(true);
+        setSearchStat(stat);
+    };
+
+    function goNext() {
+        navigate('/searchBox', {
+            state: {
+                stat: searchStat
+            }
+        });
+    }
 
     return (
         <>
@@ -67,16 +86,16 @@ function TextFilter() {
             <div className="mt-4">
                 <input type="text" value={searchText} onChange={onChange}></input>
                 <motion.nav className="searchFilter" initial={false} animate={isVisible ? 'open' : 'closed'}>
-                    <motion.div variants={divVariants} style={{ pointerEvents: isVisible ? 'auto' : 'none' }}>
+                    <motion.div className="border-solid border-2 border-gray-700 rounded-lg pt-2 pb-2 mt-4" variants={divVariants} style={{ pointerEvents: isVisible ? 'auto' : 'none' }}>
                         {list.map((x) => (
                             <motion.button
-                                className="block text-center"
+                                className="block border-gray-300 text-center"
                                 initial="init"
                                 whileHover="hover"
                                 whileTap="pressed"
                                 variants={buttonVariants}
                                 custom={clicked}
-                                onClick={() => setClicked(true)}
+                                onClick={() => onChangeStat(x.id)}
                                 key={x.id}
                             >
                                 {x.title}
@@ -84,7 +103,7 @@ function TextFilter() {
                         ))}
                     </motion.div>
                 </motion.nav>
-                <Button color="white" variant="filled" className="block text-center mt-4 font-bold text-gray-800 rounded-md">
+                <Button color="white" variant="filled" className="block text-center mt-4 font-bold text-gray-800 rounded-md" onClick={goNext}>
                     검색
                 </Button>
             </div>
