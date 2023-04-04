@@ -2,10 +2,17 @@ import { motion, Variants } from 'framer-motion';
 import { contentsList } from '@/utils/everything';
 import { useState } from 'react';
 
+import { search } from '@selector/SgisSelector';
+import { useRecoilState } from 'recoil';
+import { Button } from '@material-tailwind/react';
+
 //text 검색창
-function TextFilter(props: { searchText: string }) {
-    const searchText = props.searchText;
+function TextFilter() {
     const [clicked, setClicked] = useState(false);
+    const [searchText, setSearchText] = useRecoilState(search);
+
+    let list = [{ id: 'none', title: '' }]; // 검색 조건과 일치하는 리스트
+    let isVisible = false;
 
     const divVariants: Variants = {
         open: {
@@ -36,26 +43,52 @@ function TextFilter(props: { searchText: string }) {
         init: { scale: 1 }
     };
 
-    let list = [{ id: 'none', title: '' }];
-    let isOpen = false;
-
     if (searchText) {
-        isOpen = true;
-        list = contentsList.filter((text) => {
-            return text.title.replace(' ', '').toLocaleLowerCase().includes(searchText.toLocaleLowerCase());
+        isVisible = true;
+        list = [];
+        contentsList.map((data) => {
+            list.push(
+                ...data.content.filter((text) => {
+                    return text.title.replace(' ', '').toLocaleLowerCase().includes(searchText.trim().toLocaleLowerCase());
+                })
+            );
         });
     }
 
+    const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setSearchText(e.target.value);
+    };
+
     return (
-        <motion.nav className="searchFilter" initial={false} animate={isOpen ? 'open' : 'closed'}>
-            <motion.div variants={divVariants} style={{ pointerEvents: isOpen ? 'auto' : 'none' }}>
-                {list.map((x) => (
-                    <motion.button initial="init" whileHover="hover" whileTap="pressed" variants={buttonVariants} custom={clicked} onClick={() => setClicked(true)} key={x.id}>
-                        {x.title}
-                    </motion.button>
-                ))}
-            </motion.div>
-        </motion.nav>
+        <>
+            <div>
+                <p className="text-2xl">어떤 통계를 찾고 계신가요?</p>
+            </div>
+            <div className="mt-4">
+                <input type="text" value={searchText} onChange={onChange}></input>
+                <motion.nav className="searchFilter" initial={false} animate={isVisible ? 'open' : 'closed'}>
+                    <motion.div variants={divVariants} style={{ pointerEvents: isVisible ? 'auto' : 'none' }}>
+                        {list.map((x) => (
+                            <motion.button
+                                className="block text-center"
+                                initial="init"
+                                whileHover="hover"
+                                whileTap="pressed"
+                                variants={buttonVariants}
+                                custom={clicked}
+                                onClick={() => setClicked(true)}
+                                key={x.id}
+                            >
+                                {x.title}
+                            </motion.button>
+                        ))}
+                    </motion.div>
+                </motion.nav>
+                <Button color="white" variant="filled" className="block text-center mt-4 font-bold text-gray-800 rounded-md">
+                    검색
+                </Button>
+            </div>
+        </>
     );
 }
 

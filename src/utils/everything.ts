@@ -1,11 +1,21 @@
 import dayjs from 'dayjs';
 
 export const contentsList = [
-    { id: 'population', title: '인구통계' },
-    { id: 'houseHold', title: '가구통계' },
-    { id: 'house', title: '주택통계' },
-    { id: 'corp', title: '사업체통계' },
-    { id: 'etc', title: '그 외' }
+    {
+        subject: '센서스',
+        content: [
+            { id: 'census', title: '센서스' },
+            { id: 'population', title: '인구통계' },
+            { id: 'household', title: '가구통계' },
+            { id: 'house', title: '주택통계' },
+            { id: 'company', title: '사업체통계' },
+            { id: 'industrycode', title: '산업분류' },
+            { id: 'farmhousehold', title: '농가통계' },
+            { id: 'forestryhousehold', title: '임가통계' },
+            { id: 'fisheryhousehold', title: '어가통계' },
+            { id: 'householdmember', title: '가구원통계' }
+        ]
+    }
 ];
 
 export const yearList = () => {
