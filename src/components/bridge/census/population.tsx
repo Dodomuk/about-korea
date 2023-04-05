@@ -8,14 +8,15 @@ import { useEffect } from 'react';
 function Population() {
     // 인구통계자료
     const populationData = useRecoilValue(populationStat);
-    const chartData: ChartData = { labels: [], data: [] };
+    const populationChartData: ChartData = { labels: [], data: [], dataLabel: '' };
 
     function ShowChart() {
         populationData.map((data) => {
-            chartData.labels.push(data.adm_nm);
-            chartData.data.push(data.population);
+            populationChartData.labels.push(data.adm_nm);
+            populationChartData.data.push(data.population);
         });
-        return <PieChart chartData={chartData} />;
+        populationChartData.dataLabel = '인구수';
+        return <PieChart chartData={populationChartData} />;
     }
 
     return (

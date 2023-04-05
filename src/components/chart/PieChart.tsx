@@ -1,3 +1,4 @@
+import { chartSketch } from '@/utils/everything';
 import { ChartData } from '@interface/common';
 import { Chart, ArcElement, Tooltip } from 'chart.js';
 import { useEffect } from 'react';
@@ -13,9 +14,9 @@ function PieChart(props: { chartData: ChartData }) {
         labels: props.chartData.labels,
         datasets: [
             {
-                label: 'Dataset 1',
+                label: props.chartData.dataLabel ?? '',
                 data: props.chartData.data,
-                backgroundColor: ['Red', 'Orange', 'Yellow', 'Green', 'Blue']
+                backgroundColor: chartSketch(props.chartData.data.length)
             }
         ]
     };
