@@ -3,11 +3,12 @@ import React from 'react';
 
 import App from '../App';
 import Main from '@components/index';
-import Error from '../components/error/index';
-import SearchBox from '@components/main/searchBox';
+import Error from '@components/error/index';
+import SearchBox from '@/components/search/searchBox';
+import Population from '@components/bridge/census/population';
 // const main = React.lazy(() => import('../components/index'));
 
-//FIXME: suspense 문제 발생
+//FIXME: suspense 에러 발생
 // const SearchBox = React.lazy(() => import('@/components/main/searchBox'));
 
 export const routes = createBrowserRouter([
@@ -23,5 +24,9 @@ export const routes = createBrowserRouter([
     {
         path: '/searchBox',
         element: <SearchBox />
+    },
+    {
+        path: '/population',
+        element: <Population />
     }
 ]);

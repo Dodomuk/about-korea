@@ -1,25 +1,9 @@
-import { AxiosResponse } from 'axios';
-import { selectorFamily } from 'recoil';
-import { DemographicsReq, DemographicsRes } from '@interface/Census';
-import { getDemographicsInfo } from '@module/CensusModule';
-import { populationStatistics } from '@store/CensusStore';
+import { DemograhicInfo } from '@/interface/Census';
+import { atom } from 'recoil';
 
-// const getDemographics = selectorFamily<DemographicsRes, DemographicsReq>({
-//     key: 'getDemographics',
-//     get: (req: DemographicsReq) => async () => {
-//         console.log("누름")
-//         const res = await getDemographicsInfo(req);
-//         return res;
-//     }
-//     // set: ({ set }, newValue) => {
-//     //   set(populationStatistics, newValue);
-//     // },
-// });
+const populationStat = atom<DemograhicInfo[]>({
+    key: 'populationStat',
+    default: []
+});
 
-async function getDemographics(req: DemographicsReq) {
-    console.log('누름');
-    const res = await getDemographicsInfo(req);
-    return res;
-}
-
-export { getDemographics };
+export { populationStat };

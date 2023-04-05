@@ -1,14 +1,11 @@
 import { useNavigate } from 'react-router-dom';
-import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
+import { useSetRecoilState } from 'recoil';
 
-import { accessKey, getKey } from '@selector/SgisSelector';
-import { search } from '@selector/SgisSelector';
+import { accessKey } from '@selector/SgisSelector';
 
-import Population from '@components/chart/population';
-import SearchBox from '@/components/main/searchBox';
 import { useEffect } from 'react';
 import { getAccessKey } from '@/module/SgisModule';
-import TextFilter from './main/TextFilter';
+import TextFilter from '@components/search/TextFilter';
 
 const Main = () => {
     const keyHandler = useSetRecoilState(accessKey);

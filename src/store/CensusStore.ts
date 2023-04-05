@@ -1,8 +1,9 @@
-import { atom } from 'recoil';
+import { DemographicsReq, DemographicsRes } from '@interface/Census';
+import { getDemographicsInfo } from '@module/CensusModule';
 
-const populationStatistics = atom({
-    key: 'populationStatistics',
-    default: ''
-});
+async function getDemographics(req: DemographicsReq) {
+    const res = await getDemographicsInfo(req);
+    return res;
+}
 
-export { populationStatistics };
+export { getDemographics };
