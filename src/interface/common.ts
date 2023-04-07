@@ -6,7 +6,7 @@ export type HttpCommonStatus = {
 
 export type ChartData = {
     labels: string[];
-    data: string[];
+    data: (string | number)[];
     dataLabel?: string;
     colors?: string[];
 };

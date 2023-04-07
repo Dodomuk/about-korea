@@ -15,8 +15,8 @@ function PieChart(props: { chartData: ChartData }) {
         datasets: [
             {
                 label: props.chartData.dataLabel ?? '',
-                data: props.chartData.data,
-                backgroundColor: chartSketch(props.chartData.data.length)
+                data: props.chartData.data ?? [],
+                backgroundColor: chartSketch(props.chartData.data.length ?? 0)
             }
         ]
     };
