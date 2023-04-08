@@ -1,4 +1,5 @@
 import dayjs from 'dayjs';
+import { useNavigate } from 'react-router-dom';
 
 export const contentsList = [
     {
@@ -83,3 +84,8 @@ const palette = [
     '#2f4f4f',
     '#fffafa'
 ];
+
+const navigate = useNavigate();
+export function progressBeforeNav(navi: string) {
+    navigate({ pathname: '/progress', search: `?page=${navi}` });
+}

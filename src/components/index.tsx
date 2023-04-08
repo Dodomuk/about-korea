@@ -6,6 +6,7 @@ import { accessKey } from '@selector/SgisSelector';
 import { useEffect } from 'react';
 import { getAccessKey } from '@/module/SgisModule';
 import TextFilter from '@components/search/TextFilter';
+import ProgressBar from '@/components/bridge';
 
 const Main = () => {
     const keyHandler = useSetRecoilState(accessKey);
@@ -27,10 +28,6 @@ const Main = () => {
         navigate('/error');
     }
 
-    return (
-        <>
-            <TextFilter />
-        </>
-    );
+    return <TextFilter />;
 };
 export default Main;

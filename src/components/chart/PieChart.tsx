@@ -10,6 +10,7 @@ function PieChart(props: { chartData: ChartData }) {
     useEffect(() => {
         console.debug('PieChart', props.chartData);
     }, []);
+
     const data = {
         labels: props.chartData.labels,
         datasets: [

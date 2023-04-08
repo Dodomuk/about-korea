@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { search } from '@/selector/SgisSelector';
 import { useRecoilState } from 'recoil';
 import { Button } from '@material-tailwind/react';
-import { createSearchParams, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 //text 검색창
 function TextFilter() {
