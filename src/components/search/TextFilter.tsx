@@ -1,9 +1,9 @@
 import { motion, Variants } from 'framer-motion';
-import { contentsList, progressBeforeNav } from '@/utils/everything';
-import { useEffect, useState } from 'react';
+import { contentsList } from '@/utils/everything';
+import { useState } from 'react';
 
-import { navigator, search } from '@selector/SgisSelector';
-import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
+import { search } from '@selector/SgisSelector';
+import { useRecoilState } from 'recoil';
 import { Button } from '@material-tailwind/react';
 import { useNavigate } from 'react-router-dom';
 
@@ -12,18 +12,10 @@ function TextFilter() {
     const [clicked, setClicked] = useState(false);
     const [searchText, setSearchText] = useRecoilState(search);
     const [searchStat, setSearchStat] = useState('');
-    const navigationHandler = useSetRecoilState(navigator);
     const navigate = useNavigate();
-    const a = useRecoilValue(navigator);
 
-    let list = [{ id: 'none', title: '' }]; // 검색 조건과 일치하는 리스트
+    let list = [{ id: 'none', title: '' }]; // 검색 조건p과 일치하는 리스트
     let isVisible = false;
-
-    useEffect(() => {
-        // route이동을 위한 navigateFunction 저장
-        navigationHandler(navigate);
-        console.log(a);
-    }, []);
 
     const divVariants: Variants = {
         open: {
@@ -79,12 +71,11 @@ function TextFilter() {
     };
 
     function goNext() {
-        if (navigate) progressBeforeNav(navigate, 'searchBox');
-        // navigate('/searchBox', {
-        //     state: {
-        //         stat: searchStat
-        //     }
-        // });
+        navigate('/searchBox', {
+            state: {
+                stat: searchStat
+            }
+        });
     }
 
     return (

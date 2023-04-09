@@ -2,25 +2,24 @@ import { useState } from 'react';
 
 import './searchBox.css';
 
-import { progressBeforeNav, yearList } from '@/utils/everything';
 import { DemographicsReq } from '@/interface/Census';
-import dayjs from 'dayjs';
+import { accessKey } from '@/selector/SgisSelector';
+import { progressBeforeNav, yearList } from '@/utils/everything';
 import { getDemographics } from '@store/CensusStore';
-import { accessKey, navigator } from '@/selector/SgisSelector';
+import dayjs from 'dayjs';
 
-import { Select, Option, Typography, Button } from '@material-tailwind/react';
-import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
-// import { useLocation, useNavigate } from 'react-router-dom';
+import { Button, Option, Select, Typography } from '@material-tailwind/react';
 import { populationStat } from '@selector/CensusSelector';
+import { useNavigate } from 'react-router-dom';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 
 const searchBox = () => {
-    const [key, setKey] = useRecoilState(accessKey);
-    const navigate = useRecoilValue(navigator);
-    // const navigate = useNavigate();
-
+    const key = useRecoilValue(accessKey);
     const populationStatHandler = useSetRecoilState(populationStat);
     const [selectedYear, setSelectedYear] = useState(Number(dayjs().format('YYYY')) - 2);
     const searchYearList = yearList();
+
+    const navigate = useNavigate();
 
     function yearSelect(year: number) {
         setSelectedYear(year);
@@ -35,9 +34,7 @@ const searchBox = () => {
         await getDemographics(demographicsReqParam).then((res) => {
             populationStatHandler(res);
         });
-        // navigate({ pathname: '/progress', search: `?page=population` });
-        console.log(navigate);
-        progressBeforeNav(navigate!, 'population');
+        progressBeforeNav(navigate, 'population');
     }
 
     return (

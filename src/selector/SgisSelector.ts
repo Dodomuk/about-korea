@@ -19,9 +19,4 @@ const search = atom({
     default: ''
 });
 
-const navigator = atom<NavigateFunction | undefined>({
-    key: 'navigator',
-    default: undefined
-});
-
-export { accessKey, getKey, search, navigator };
+export { accessKey, getKey, search };
