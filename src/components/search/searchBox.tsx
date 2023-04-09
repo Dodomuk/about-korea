@@ -6,15 +6,16 @@ import { progressBeforeNav, yearList } from '@/utils/everything';
 import { DemographicsReq } from '@/interface/Census';
 import dayjs from 'dayjs';
 import { getDemographics } from '@store/CensusStore';
-import { accessKey } from '@/selector/SgisSelector';
+import { accessKey, navigator } from '@/selector/SgisSelector';
 
 import { Select, Option, Typography, Button } from '@material-tailwind/react';
-import { useRecoilState, useSetRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 // import { useLocation, useNavigate } from 'react-router-dom';
 import { populationStat } from '@selector/CensusSelector';
 
 const searchBox = () => {
     const [key, setKey] = useRecoilState(accessKey);
+    const navigate = useRecoilValue(navigator);
     // const navigate = useNavigate();
 
     const populationStatHandler = useSetRecoilState(populationStat);
@@ -35,8 +36,8 @@ const searchBox = () => {
             populationStatHandler(res);
         });
         // navigate({ pathname: '/progress', search: `?page=population` });
-
-        progressBeforeNav('population');
+        console.log(navigate);
+        progressBeforeNav(navigate!, 'population');
     }
 
     return (

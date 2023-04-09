@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
 
-import { accessKey } from '@selector/SgisSelector';
+import { accessKey, navigator } from '@selector/SgisSelector';
 
 import { useEffect } from 'react';
 import { getAccessKey } from '@/module/SgisModule';
@@ -13,6 +13,7 @@ const Main = () => {
 
     useEffect(() => {
         getAccessKey().then((res) => {
+            // sgis 발급 토큰 저장
             keyHandler(res);
         });
     }, []);

@@ -1,5 +1,5 @@
 import { atom, DefaultValue, selector } from 'recoil';
-import { getAccessKey } from '@module/SgisModule';
+import { NavigateFunction } from 'react-router-dom';
 
 const accessKey = atom({
     key: 'accessKey',
@@ -19,4 +19,9 @@ const search = atom({
     default: ''
 });
 
-export { accessKey, getKey, search };
+const navigator = atom<NavigateFunction | undefined>({
+    key: 'navigator',
+    default: undefined
+});
+
+export { accessKey, getKey, search, navigator };

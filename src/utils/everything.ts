@@ -1,5 +1,7 @@
+import { navigator } from '@/selector/SgisSelector';
 import dayjs from 'dayjs';
-import { useNavigate } from 'react-router-dom';
+import { NavigateFunction, useNavigate } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
 
 export const contentsList = [
     {
@@ -85,7 +87,6 @@ const palette = [
     '#fffafa'
 ];
 
-const navigate = useNavigate();
-export function progressBeforeNav(navi: string) {
-    navigate({ pathname: '/progress', search: `?page=${navi}` });
+export function progressBeforeNav(navigate: NavigateFunction, to: string) {
+    navigate({ pathname: '/progress', search: `?page=${to}` });
 }
