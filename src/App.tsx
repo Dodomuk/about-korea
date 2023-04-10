@@ -2,6 +2,7 @@ import { RecoilEnv } from 'recoil';
 
 import Main from '@components/index';
 import './App.css';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
     //Recoil 중복 호출 에러 방지
@@ -10,6 +11,7 @@ function App() {
     return (
         <div className="App">
             <Main />
+            <ToastContainer />
         </div>
     );
 }

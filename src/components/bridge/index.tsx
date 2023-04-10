@@ -9,10 +9,10 @@ function ProgressBar() {
 
     useEffect(() => {
         if (percent !== 100) {
-            setTimeout(() => setPercent(percent + 1), 10);
+            setTimeout(() => setPercent(percent + 1), 5);
         } else {
             const location = param.get('page');
-            navigate('/' + location);
+            navigate('/' + location, { replace: true });
         }
     });
 

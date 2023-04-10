@@ -7,6 +7,8 @@ import { useRecoilState } from 'recoil';
 import { Button } from '@material-tailwind/react';
 import { useNavigate } from 'react-router-dom';
 
+import '@scss/search.scss';
+
 //text 검색창
 function TextFilter() {
     const [clicked, setClicked] = useState(false);
@@ -79,11 +81,11 @@ function TextFilter() {
     }
 
     return (
-        <>
+        <div className="box-wrapper">
             <div>
                 <p className="text-2xl">어떤 통계를 찾고 계신가요?</p>
             </div>
-            <div className="mt-4">
+            <div className="mt-4 flex flex-col">
                 <input type="text" value={searchText} onChange={onChange}></input>
                 <motion.nav className="searchFilter" initial={false} animate={isVisible ? 'open' : 'closed'}>
                     <motion.div className="border-solid border-2 border-gray-700 rounded-lg pt-2 pb-2 mt-4" variants={divVariants} style={{ pointerEvents: isVisible ? 'auto' : 'none' }}>
@@ -107,7 +109,7 @@ function TextFilter() {
                     검색
                 </Button>
             </div>
-        </>
+        </div>
     );
 }
 

@@ -21,7 +21,12 @@
       "@store/*": ["./src/store/*"],
       "@module/*": ["./src/module/*"],
       "@selector/*": ["./src/selector/*"],
-      "@interface/*": ["./src/interface/*"]
+      "@interface/*": ["./src/interface/*"],
+      "@bridge/*": ["./src/bridge/*"],
+      "@assets/*": ["./src/assets/*"],
+      "@chart/*": ["./src/chart/*"],
+      "@common/*": ["./src/common/*"],
+      "@scss/*": ["./src/scss/*"]
     }
   },
   "include": ["src"],

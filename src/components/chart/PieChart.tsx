@@ -4,6 +4,8 @@ import { Chart, ArcElement, Tooltip } from 'chart.js';
 import { useEffect } from 'react';
 import { Pie } from 'react-chartjs-2';
 
+import '@scss/chart.scss';
+
 Chart.register(ArcElement, Tooltip);
 
 function PieChart(props: { chartData: ChartData }) {
@@ -23,9 +25,9 @@ function PieChart(props: { chartData: ChartData }) {
     };
 
     return (
-        <>
+        <div className="box-wrapper">
             <Pie data={data} />
-        </>
+        </div>
     );
 }
 

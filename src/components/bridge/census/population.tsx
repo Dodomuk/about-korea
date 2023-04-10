@@ -3,7 +3,6 @@ import { populationStat } from '@selector/CensusSelector';
 
 import PieChart from '@components/chart/PieChart';
 import { ChartData } from '@interface/common';
-import { useEffect } from 'react';
 
 function Population() {
     // 인구통계자료
@@ -24,7 +23,7 @@ function Population() {
         populationChartData.dataLabel = '인구수';
         averageAgeChartData.dataLabel = '평균 연령';
         return (
-            <div>
+            <div className="text-center">
                 <p>인구수</p>
                 <PieChart chartData={populationChartData} />
                 <p>평균 연령</p>

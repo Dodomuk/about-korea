@@ -27,6 +27,26 @@ export default defineConfig({
             {
                 find: '@interface',
                 replacement: path.resolve(__dirname, 'src/interface')
+            },
+            {
+                find: '@bridge',
+                replacement: path.resolve(__dirname, 'src/bridge')
+            },
+            {
+                find: '@assets',
+                replacement: path.resolve(__dirname, 'src/assets')
+            },
+            {
+                find: '@chart',
+                replacement: path.resolve(__dirname, 'src/chart')
+            },
+            {
+                find: '@common',
+                replacement: path.resolve(__dirname, 'src/common')
+            },
+            {
+                find: '@scss',
+                replacement: path.resolve(__dirname, 'src/scss')
             }
         ]
     },
