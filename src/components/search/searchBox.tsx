@@ -41,7 +41,7 @@ const SearchBox = () => {
         } else {
             toast.error('년도를 입력해주세요!', {
                 position: 'bottom-center',
-                autoClose: 300000,
+                autoClose: 2000,
                 hideProgressBar: false,
                 closeOnClick: true,
                 pauseOnHover: true,
