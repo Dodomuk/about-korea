@@ -1,4 +1,4 @@
-import '@scss/ToastNotification.scss';
+import '@scss/toastNotification.scss';
 import warning from '@/assets/warning.png';
 
 function ToastNotification(props: { content: string }) {
