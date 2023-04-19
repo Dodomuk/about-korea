@@ -30,7 +30,7 @@ export default defineConfig({
             },
             {
                 find: '@bridge',
-                replacement: path.resolve(__dirname, 'src/bridge')
+                replacement: path.resolve(__dirname, 'src/components/bridge')
             },
             {
                 find: '@assets',
@@ -38,11 +38,11 @@ export default defineConfig({
             },
             {
                 find: '@chart',
-                replacement: path.resolve(__dirname, 'src/chart')
+                replacement: path.resolve(__dirname, 'src/components/chart')
             },
             {
                 find: '@common',
-                replacement: path.resolve(__dirname, 'src/common')
+                replacement: path.resolve(__dirname, 'src/components/common')
             },
             {
                 find: '@scss',

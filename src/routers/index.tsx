@@ -2,16 +2,11 @@ import { createBrowserRouter } from 'react-router-dom';
 import React from 'react';
 
 import App from '../App';
-import Main from '@components/index';
 import Error from '@/components/error/index';
-import SearchBox from '@/components/search/searchBox';
-import Population from '@components/bridge/census/population';
 import ProgressBar from '@components/bridge';
-// const main = React.lazy(() => import('../components/index'));
 
-//FIXME: suspense 에러 발생
-// const SearchBox = React.lazy(() => import('@/components/main/searchBox'));
-
+const SearchBox = React.lazy(() => import('@components/search/searchBox'));
+const Population = React.lazy(() => import('@bridge/census/population'));
 export const routes = createBrowserRouter([
     {
         path: '/',

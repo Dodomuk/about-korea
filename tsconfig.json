@@ -22,10 +22,10 @@
       "@module/*": ["./src/module/*"],
       "@selector/*": ["./src/selector/*"],
       "@interface/*": ["./src/interface/*"],
-      "@bridge/*": ["./src/bridge/*"],
       "@assets/*": ["./src/assets/*"],
-      "@chart/*": ["./src/chart/*"],
-      "@common/*": ["./src/common/*"],
+      "@bridge/*": ["./src/components/bridge/*"],
+      "@chart/*": ["./src/components/chart/*"],
+      "@common/*": ["./src/components/common/*"],
       "@scss/*": ["./src/scss/*"]
     }
   },
