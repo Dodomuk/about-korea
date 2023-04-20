@@ -58,9 +58,9 @@ const SearchBox = () => {
             <Typography variant="h4" color="white">
                 조건을 입력하세요
             </Typography>
-            <Typography color="gray" className="mt-1 font-normal">
+            {/* <Typography color="gray" className="mt-1 font-normal">
                 추후 검색된 값 넣음
-            </Typography>
+            </Typography> */}
             <form className="box-form mt-8 mb-2 xl:w-96 max-w-screen-lg">
                 <div className="xl:w-96 pl-2">
                     <Select label="검색할 년도">
