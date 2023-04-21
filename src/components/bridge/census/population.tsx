@@ -1,7 +1,7 @@
 import { useRecoilValue } from 'recoil';
-import { populationStat } from '@selector/CensusSelector';
+import { populationStat } from '@selector/census_selector';
 
-import PieChart from '@components/chart/PieChart';
+import PieChart from '@components/chart/pie_chart';
 import { ChartData } from '@interface/common';
 
 function Population() {

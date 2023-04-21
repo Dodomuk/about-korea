@@ -2,10 +2,10 @@ import { createBrowserRouter } from 'react-router-dom';
 import React from 'react';
 
 import App from '../App';
-import Error from '@/components/error/index';
+import Error from '@components/error/index';
 import ProgressBar from '@components/bridge';
 
-const SearchBox = React.lazy(() => import('@components/search/searchBox'));
+const SearchBox = React.lazy(() => import('@components/search/search_box'));
 const Population = React.lazy(() => import('@bridge/census/population'));
 export const routes = createBrowserRouter([
     {

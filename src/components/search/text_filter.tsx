@@ -2,7 +2,7 @@ import { motion, Variants } from 'framer-motion';
 import { contentsList } from '@/utils/everything';
 import { useState } from 'react';
 
-import { search } from '@selector/SgisSelector';
+import { search } from '@selector/sgis_selector';
 import { useRecoilState } from 'recoil';
 import { Button } from '@material-tailwind/react';
 import { useNavigate } from 'react-router-dom';

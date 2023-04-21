@@ -5,7 +5,7 @@ import { RecoilRoot } from 'recoil';
 import './index.css';
 import { routes } from './routers';
 import { ThemeProvider } from '@material-tailwind/react';
-import LoadingSpinner from '@components/common/LoadingSpinner';
+import LoadingSpinner from '@components/common/loading_spinner';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     // <React.StrictMode>

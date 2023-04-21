@@ -1,5 +1,5 @@
-import { DemographicsReq, DemographicsRes } from '@interface/Census';
-import { getDemographicsInfo } from '@module/CensusModule';
+import { DemographicsReq } from '@interface/census';
+import { getDemographicsInfo } from '@module/census_module';
 
 async function getDemographics(req: DemographicsReq) {
     const res = await getDemographicsInfo(req);

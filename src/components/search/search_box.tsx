@@ -2,13 +2,13 @@ import { useState } from 'react';
 
 import '@scss/search.scss';
 
-import { DemographicsReq } from '@interface/Census';
-import { accessKey } from '@selector/SgisSelector';
+import { accessKey } from '@/selector/sgis_selector';
 import { progressBeforeNav, yearList } from '@/utils/everything';
-import { getDemographics } from '@store/CensusStore';
+import { getDemographics } from '@/store/census_store';
+import { DemographicsReq } from '@interface/census';
 
 import { Button, Option, Select, Typography } from '@material-tailwind/react';
-import { populationStat } from '@selector/CensusSelector';
+import { populationStat } from '@/selector/census_selector';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { toast, ToastContainer } from 'react-toastify';
@@ -47,7 +47,7 @@ const SearchBox = () => {
                 pauseOnHover: true,
                 draggable: true,
                 progress: undefined,
-                theme: "colored"
+                theme: 'colored'
             });
         }
     }

@@ -3,11 +3,11 @@ import { useEffect } from 'react';
 import { useSetRecoilState } from 'recoil';
 import { injectStyle } from 'react-toastify/dist/inject-style';
 
-import { accessKey } from '@selector/SgisSelector';
+import { accessKey } from '@selector/sgis_selector';
 
-import { getAccessKey } from '@/module/SgisModule';
+import { getAccessKey } from '@module/sgis_module';
 
-import TextFilter from '@components/search/TextFilter';
+import TextFilter from '@components/search/text_filter';
 
 const Main = () => {
     const keyHandler = useSetRecoilState(accessKey);

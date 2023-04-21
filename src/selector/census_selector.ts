@@ -1,4 +1,4 @@
-import { DemograhicInfo } from '@/interface/Census';
+import { DemograhicInfo } from '@interface/census';
 import { atom } from 'recoil';
 
 const populationStat = atom<DemograhicInfo[]>({
