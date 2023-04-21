@@ -1,12 +1,13 @@
 import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 import { useSetRecoilState } from 'recoil';
+import { injectStyle } from 'react-toastify/dist/inject-style';
 
 import { accessKey } from '@selector/SgisSelector';
 
-import { useEffect } from 'react';
 import { getAccessKey } from '@/module/SgisModule';
+
 import TextFilter from '@components/search/TextFilter';
-import { injectStyle } from 'react-toastify/dist/inject-style';
 
 const Main = () => {
     const keyHandler = useSetRecoilState(accessKey);

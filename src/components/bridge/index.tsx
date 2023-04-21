@@ -18,7 +18,7 @@ function ProgressBar() {
 
     return (
         <div className="w-80 align-center">
-            <Progress value={percent} />
+            <Progress value={percent} color="green" />
         </div>
     );
 }

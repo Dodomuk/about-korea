@@ -21,7 +21,8 @@ export const contentsList = [
 
 export const yearList = () => {
     const list = [];
-    for (let index = 1980; index < Number(dayjs().format('YYYY')); index++) {
+    //sgis 에서 제공하는 년도 (2015  ~  2021)
+    for (let index = 2015; index < (Number(dayjs().format('YYYY')) - 1); index++) {
         list.push(index);
     }
     return list.reverse();
