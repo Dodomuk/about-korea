@@ -40,28 +40,28 @@ function TextFilter() {
         }
     };
 
-    const buttonVariants = {
-        hover: (clicked: boolean) => ({
-            scale: clicked ? 1 : 1.5
-        }),
-        pressed: { scale: 0.5 },
-        init: { scale: 1 }
-    };
+    // const buttonVariants = {
+    //     hover: (clicked: boolean) => ({
+    //         scale: clicked ? 1 : 1.5
+    //     }),
+    //     pressed: { scale: 0.5 },
+    //     init: { scale: 1 }
+    // };
 
-    if (searchText) {
-        list = [];
-        contentsList.map((data) => {
-            list.push(
-                ...data.content.filter((text) => {
-                    return text.title.replace(' ', '').toLocaleLowerCase().includes(searchText.trim().toLocaleLowerCase());
-                })
-            );
-        });
+    // if (searchText) {
+    //     list = [];
+    //     contentsList.map((data) => {
+    //         list.push(
+    //             ...data.content.filter((text) => {
+    //                 return text.title.replace(' ', '').toLocaleLowerCase().includes(searchText.trim().toLocaleLowerCase());
+    //             })
+    //         );
+    //     });
 
-        if (list.length > 0) {
-            isVisible = true;
-        }
-    }
+    //     if (list.length > 0) {
+    //         isVisible = true;
+    //     }
+    // }
 
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearchText(e.target.value);
@@ -82,7 +82,7 @@ function TextFilter() {
 
     return (
         <div className="box-wrapper">
-            <div>
+            {/* <div>
                 <p className="text-2xl">어떤 통계를 찾고 계신가요?</p>
             </div>
             <div className="mt-4 flex flex-col">
@@ -108,7 +108,7 @@ function TextFilter() {
                 <Button color="white" variant="filled" className="block text-center mt-4 font-bold text-gray-800 rounded-md" onClick={goNext}>
                     검색
                 </Button>
-            </div>
+            </div> */}
         </div>
     );
 }

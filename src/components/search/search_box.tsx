@@ -7,7 +7,7 @@ import { progressBeforeNav, yearList } from '@/utils/everything';
 import { getDemographics } from '@/store/census_store';
 import { DemographicsReq } from '@interface/census';
 
-import { Button, Option, Select, Typography } from '@material-tailwind/react';
+import { Button, Option, Select, Typography, SelectProps } from '@material-tailwind/react';
 import { populationStat } from '@/selector/census_selector';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
@@ -18,6 +18,7 @@ const SearchBox = () => {
     const populationStatHandler = useSetRecoilState(populationStat);
     const [selectedYear, setSelectedYear] = useState(0);
     const searchYearList = yearList();
+    const selectProps: SelectProps = { success: true, children: '' };
 
     const navigate = useNavigate();
 
@@ -63,7 +64,7 @@ const SearchBox = () => {
             </Typography> */}
             <form className="box-form mt-8 mb-2 xl:w-96 max-w-screen-lg">
                 <div className="xl:w-96 pl-2">
-                    <Select label="검색할 년도">
+                    <Select className="hover:border-green-500" label="검색할 년도" color="green" success>
                         {searchYearList.map((year) => (
                             <Option key={`year_${year}`} onClick={() => yearSelect(year)}>
                                 {year}

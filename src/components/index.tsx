@@ -8,6 +8,7 @@ import { accessKey } from '@selector/sgis_selector';
 import { getAccessKey } from '@module/sgis_module';
 
 import TextFilter from '@components/search/text_filter';
+import NavBar from '@common/nav-bar';
 
 const Main = () => {
     const keyHandler = useSetRecoilState(accessKey);
@@ -32,6 +33,11 @@ const Main = () => {
         navigate('/error');
     }
 
-    return <TextFilter />;
+    return (
+        <>
+            <NavBar />
+            <TextFilter />
+        </>
+    );
 };
 export default Main;

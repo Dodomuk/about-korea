@@ -1,28 +1,24 @@
 import dayjs from 'dayjs';
 import { NavigateFunction } from 'react-router-dom';
 
-export const contentsList = [
-    {
-        subject: '센서스',
-        content: [
-            { id: 'census', title: '센서스' },
-            { id: 'population', title: '인구통계' },
-            { id: 'household', title: '가구통계' },
-            { id: 'house', title: '주택통계' },
-            { id: 'company', title: '사업체통계' },
-            { id: 'industrycode', title: '산업분류' },
-            { id: 'farmhousehold', title: '농가통계' },
-            { id: 'forestryhousehold', title: '임가통계' },
-            { id: 'fisheryhousehold', title: '어가통계' },
-            { id: 'householdmember', title: '가구원통계' }
-        ]
-    }
-];
+export const contentsList: { [key: string]: { id: string; title: string }[] } = {
+    센서스: [
+        { id: 'population', title: '인구통계' },
+        { id: 'household', title: '가구통계' },
+        { id: 'house', title: '주택통계' },
+        { id: 'company', title: '사업체통계' },
+        { id: 'industrycode', title: '산업분류' },
+        { id: 'farmhousehold', title: '농가통계' },
+        { id: 'forestryhousehold', title: '임가통계' },
+        { id: 'fisheryhousehold', title: '어가통계' },
+        { id: 'householdmember', title: '가구원통계' }
+    ]
+};
 
 export const yearList = () => {
     const list = [];
     //sgis 에서 제공하는 년도 (2015  ~  2021)
-    for (let index = 2015; index < (Number(dayjs().format('YYYY')) - 1); index++) {
+    for (let index = 2015; index < Number(dayjs().format('YYYY')) - 1; index++) {
         list.push(index);
     }
     return list.reverse();
