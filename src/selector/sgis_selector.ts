@@ -19,4 +19,9 @@ const search = atom({
     default: ''
 });
 
-export { accessKey, getKey, search };
+const selectedItem = atom({
+    key: 'selectedItem',
+    default: ''
+});
+
+export { accessKey, getKey, search, selectedItem };

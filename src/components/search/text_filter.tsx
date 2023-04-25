@@ -82,6 +82,8 @@ function TextFilter() {
 
     return (
         <div className="box-wrapper">
+            {/* 임시 */}
+            대문
             {/* <div>
                 <p className="text-2xl">어떤 통계를 찾고 계신가요?</p>
             </div>

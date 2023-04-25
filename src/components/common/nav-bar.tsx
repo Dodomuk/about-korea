@@ -1,20 +1,31 @@
 import { contentsList } from '@/utils/everything';
 import { Navbar, MobileNav, Typography, IconButton } from '@material-tailwind/react';
 import { useEffect, useState } from 'react';
+import SearchImg from '@assets/search-icon.png';
+import { useRecoilState } from 'recoil';
+import { selectedItem } from '@selector/sgis_selector';
 
 const NavBar = () => {
     const [openNav, setOpenNav] = useState(false);
+    const [searchItem, setSearchItem] = useRecoilState(selectedItem);
 
     useEffect(() => {
         window.addEventListener('resize', () => window.innerWidth >= 960 && setOpenNav(false));
     }, []);
 
+    const onChange = (item: string) => {
+        setSearchItem(item);
+    };
+
     const itemList = contentsList['센서스'].flatMap((item) => item.title.replace('통계', ''));
 
     const navList = (
         <ul className="mb-4 mt-2 lg:mb-0 lg:mt-0 flex flex-col lg:flex-row gap-2 items-center lg:gap-6">
+            <div>
+                <img src={SearchImg} className="about-korea-img object-scale-down w-10" alt="about korea"></img>
+            </div>
             {itemList.map((item) => (
-                <Typography as="li" variant="small" color="blue-gray" className="p-1 font-normal" key={`통계_${item}`}>
+                <Typography as="li" variant="small" color="blue-gray" className="p-1 font-normal" key={`통계_${item}`} onClick={() => onChange(item)}>
                     <a href="#" className="flex items-center">
                         {item}
                     </a>
