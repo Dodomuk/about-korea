@@ -39,6 +39,7 @@ const Main = () => {
 
     function Contents() {
         if (selectedComponent === '인구') return <SearchBox />;
+        // 테스트
         else return <div>헤에에</div>;
     }
 

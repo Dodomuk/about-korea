@@ -12,6 +12,7 @@ import { populationStat } from '@/selector/census_selector';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { toast, ToastContainer } from 'react-toastify';
+import YearBox from './year_box';
 
 const SearchBox = () => {
     const key = useRecoilValue(accessKey);
@@ -63,15 +64,7 @@ const SearchBox = () => {
                 추후 검색된 값 넣음
             </Typography> */}
             <form className="box-form mt-8 mb-2 xl:w-96 max-w-screen-lg">
-                <div className="xl:w-96 pl-2">
-                    <Select className="hover:border-green-500" label="검색할 년도" color="green" success>
-                        {searchYearList.map((year) => (
-                            <Option key={`year_${year}`} onClick={() => yearSelect(year)}>
-                                {year}
-                            </Option>
-                        ))}
-                    </Select>
-                </div>
+                <YearBox yearSelect={yearSelect} />
                 <Button color="white" variant="filled" className="block text-center mt-4 font-bold text-gray-800 rounded-md" onClick={() => getPopulation()}>
                     검색
                 </Button>
