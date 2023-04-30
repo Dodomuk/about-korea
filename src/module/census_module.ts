@@ -1,8 +1,8 @@
 import axios from 'axios';
-import { DemographicsReq, DemograhicInfo } from '@interface/census';
+import { DemographicsReq, DemographicsRes } from '@interface/census';
 
 export async function getDemographicsInfo(param: DemographicsReq) {
-    let result: DemograhicInfo[] = [];
+    let result: DemographicsRes[] = [];
     try {
         await axios
             .get(`/api/OpenAPI3/stats/searchpopulation.json`, {

@@ -5,7 +5,7 @@ import App from '../App';
 import Error from '@components/error/index';
 import ProgressBar from '@components/bridge';
 
-const SearchBox = React.lazy(() => import('@components/search/search_box'));
+const SearchBox = React.lazy(() => import('@components/search/tools/search_box'));
 const Population = React.lazy(() => import('@bridge/census/population'));
 export const routes = createBrowserRouter([
     {

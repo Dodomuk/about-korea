@@ -3,8 +3,7 @@ import { useState } from 'react';
 import '@scss/search.scss';
 
 import { accessKey } from '@/selector/sgis_selector';
-import { progressBeforeNav, yearList } from '@/utils/everything';
-import { getDemographics } from '@/store/census_store';
+import { yearList } from '@/utils/everything';
 import { DemographicsReq } from '@interface/census';
 
 import { Button, Option, Select, Typography, SelectProps } from '@material-tailwind/react';
