@@ -5,8 +5,9 @@ import { useSetRecoilState } from 'recoil';
 import { populationStat } from '@/selector/census_selector';
 import { progressBeforeNav } from '@/utils/everything';
 import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
 import SearchBox from '../tools/search_box';
+import CustomizeToast from '@/components/common/customize-toast';
+import { ToastType } from '@/interface/common';
 
 function Population() {
     const populationStatHandler = useSetRecoilState(populationStat);
@@ -27,16 +28,7 @@ function Population() {
             progressBeforeNav(navigate, 'population');
             // 아직 년도를 선택하지 않은 경우
         } else {
-            toast.error('년도를 입력해주세요!', {
-                position: 'bottom-center',
-                autoClose: 2000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: 'colored'
-            });
+            CustomizeToast('년도를 입력해주세요!', ToastType.ERROR);
         }
     }
 
