@@ -10,3 +10,10 @@ export type ChartData = {
     dataLabel?: string;
     colors?: string[];
 };
+
+export enum ToastType {
+    INFO,
+    SUCCESS,
+    ERROR,
+    WARNING
+}

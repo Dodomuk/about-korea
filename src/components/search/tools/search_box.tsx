@@ -3,34 +3,27 @@ import { useState } from 'react';
 import '@scss/search.scss';
 
 import { accessKey } from '@/selector/sgis_selector';
-import { yearList } from '@/utils/everything';
-import { DemographicsReq } from '@interface/census';
 
-import { Button, Option, Select, Typography, SelectProps } from '@material-tailwind/react';
-import { populationStat } from '@/selector/census_selector';
-import { useNavigate } from 'react-router-dom';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
-import { toast, ToastContainer } from 'react-toastify';
+import { Button, Typography } from '@material-tailwind/react';
+import { useRecoilValue } from 'recoil';
+import { ToastContainer } from 'react-toastify';
 import YearBox from './year_box';
 
 const SearchBox = (props: { callFunc(params: any): void }) => {
     const key = useRecoilValue(accessKey);
-    const populationStatHandler = useSetRecoilState(populationStat);
     const [selectedYear, setSelectedYear] = useState(0);
-    const searchYearList = yearList();
-    const selectProps: SelectProps = { success: true, children: '' };
 
     function yearSelect(year: number) {
         setSelectedYear(year);
     }
 
     async function getViewModel() {
-        const demographicsReqParam: DemographicsReq = {
+        const param = {
             accessToken: key,
             year: selectedYear
         };
 
-        props.callFunc(demographicsReqParam);
+        props.callFunc(param);
     }
 
     return (

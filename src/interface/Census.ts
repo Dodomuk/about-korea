@@ -15,7 +15,7 @@ export type DemographicsRes = {
     result: DemograhicInfo[];
 } & HttpCommonStatus;
 
-type DemograhicInfo = {
+export type DemograhicInfo = {
     adm_cd: string; //설명
     adm_nm: string; //행정구역명
     population: string; //인구수
@@ -35,7 +35,7 @@ export type HouseHoldRes = {
     result: HouseHoldInfo[];
 } & HttpCommonStatus;
 
-type HouseHoldInfo = {
+export type HouseHoldInfo = {
     adm_cd: string; //설명
     adm_nm: string; //행정구역명
     household_cnt: string; // 가구수

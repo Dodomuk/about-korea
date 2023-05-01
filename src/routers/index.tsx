@@ -7,6 +7,7 @@ import ProgressBar from '@components/bridge';
 
 const SearchBox = React.lazy(() => import('@components/search/tools/search_box'));
 const Population = React.lazy(() => import('@bridge/census/population'));
+const HouseHold = React.lazy(() => import('@bridge/census/household'));
 export const routes = createBrowserRouter([
     {
         path: '/',
@@ -24,6 +25,10 @@ export const routes = createBrowserRouter([
     {
         path: '/population',
         element: <Population />
+    },
+    {
+        path: '/household',
+        element: <HouseHold />
     },
     {
         path: '/progress',

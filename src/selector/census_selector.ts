@@ -1,12 +1,12 @@
-import { DemographicsRes, HouseHoldRes } from '@interface/census';
+import { DemograhicInfo, HouseHoldInfo } from '@interface/census';
 import { atom } from 'recoil';
 
-const populationStat = atom<DemographicsRes[]>({
+const populationStat = atom<DemograhicInfo[]>({
     key: 'populationStat',
     default: []
 });
 
-const houseHoldStat = atom<HouseHoldRes[]>({
+const houseHoldStat = atom<HouseHoldInfo[]>({
     key: 'houseHoldStat',
     default: []
 });

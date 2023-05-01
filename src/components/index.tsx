@@ -9,6 +9,7 @@ import { getAccessKey } from '@module/sgis_module';
 
 import NavBar from '@common/nav-bar';
 import Population from '@components/search/view/population';
+import HouseHold from './search/view/household';
 
 const Main = () => {
     const keyHandler = useSetRecoilState(accessKey);
@@ -31,13 +32,9 @@ const Main = () => {
         navigate('/error');
     }
 
-    function moveCensusSearchPage() {
-        const navigate = useNavigate();
-        navigate('/error');
-    }
-
     function Contents() {
         if (selectedComponent === '인구') return <Population />;
+        else if (selectedComponent === '가구') return <HouseHold />;
         // 테스트
         else return <div>헤에에</div>;
     }
