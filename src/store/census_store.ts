@@ -1,5 +1,5 @@
-import { DemographicsReq, HouseHoldReq } from '@interface/census';
-import { getDemographicsInfo, getHouseHoldInfo } from '@module/census_module';
+import { DemographicsReq, HouseCountReq, HouseHoldReq } from '@interface/census';
+import { getDemographicsInfo, getHouseCountInfo, getHouseHoldInfo } from '@module/census_module';
 
 async function getDemographics(req: DemographicsReq) {
     const res = await getDemographicsInfo(req);
@@ -11,4 +11,9 @@ async function getHouseHolds(req: HouseHoldReq) {
     return res;
 }
 
-export { getDemographics, getHouseHolds };
+async function getHouseCounts(req: HouseCountReq) {
+    const res = await getHouseCountInfo(req);
+    return res;
+}
+
+export { getDemographics, getHouseHolds, getHouseCounts };

@@ -72,14 +72,6 @@ function TextFilter() {
         setSearchStat(stat);
     };
 
-    function goNext() {
-        navigate('/searchBox', {
-            state: {
-                stat: searchStat
-            }
-        });
-    }
-
     return (
         <div className="box-wrapper">
             {/* 임시 */}

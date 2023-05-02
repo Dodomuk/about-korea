@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { DemograhicInfo, DemographicsReq, HouseHoldInfo, HouseHoldReq } from '@interface/census';
+import { DemograhicInfo, DemographicsReq, HouseCountInfo, HouseCountReq, HouseHoldInfo, HouseHoldReq } from '@interface/census';
 
 export async function getDemographicsInfo(param: DemographicsReq) {
     let result: DemograhicInfo[] = [];
@@ -23,7 +23,7 @@ export async function getHouseHoldInfo(param: HouseHoldReq) {
     let result: HouseHoldInfo[] = [];
     try {
         await axios
-            .get('/api//OpenAPI3/stats/household.json', {
+            .get('/api/OpenAPI3/stats/household.json', {
                 params: param
             })
             .then((res) => {
@@ -36,6 +36,25 @@ export async function getHouseHoldInfo(param: HouseHoldReq) {
     }
     return result;
 }
+
+export async function getHouseCountInfo(param: HouseCountReq) {
+    let result: HouseCountInfo[] = [];
+    try {
+        await axios
+            .get('/api/OpenAPI3/stats/house.json', {
+                params: param
+            })
+            .then((res) => {
+                if (isSuccess(res.data.errMsg)) result = res.data.result;
+
+                console.debug('주택 통계 처리 >> ', result);
+            });
+    } catch (error) {
+        throw error;
+    }
+    return result;
+}
+
 /**
  * @Param msg : axios 호출 응답 유형
  */

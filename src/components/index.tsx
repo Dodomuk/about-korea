@@ -9,7 +9,8 @@ import { getAccessKey } from '@module/sgis_module';
 
 import NavBar from '@common/nav-bar';
 import Population from '@components/search/view/population';
-import HouseHold from './search/view/household';
+import HouseHold from '@components/search/view/household';
+import HouseCount from '@components/search/view/house_count';
 
 const Main = () => {
     const keyHandler = useSetRecoilState(accessKey);
@@ -24,7 +25,7 @@ const Main = () => {
         injectStyle();
     }, []);
 
-    useEffect(() => { }, [selectedComponent]);
+    useEffect(() => {}, [selectedComponent]);
 
     // FIXME : (전역화 고려)
     function moveErrorPage() {
@@ -33,10 +34,16 @@ const Main = () => {
     }
 
     function Contents() {
-        if (selectedComponent === '인구') return <Population />;
-        else if (selectedComponent === '가구') return <HouseHold />;
-        // 테스트
-        else return <div>헤에에</div>;
+        switch (selectedComponent) {
+            case '인구':
+                return <Population />;
+            case '가구':
+                return <HouseHold />;
+            case '주택':
+                return <HouseCount />;
+            default:
+                return <div>헤에에</div>;
+        }
     }
 
     return (

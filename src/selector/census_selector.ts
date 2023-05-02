@@ -1,4 +1,4 @@
-import { DemograhicInfo, HouseHoldInfo } from '@interface/census';
+import { DemograhicInfo, HouseCountInfo, HouseHoldInfo } from '@interface/census';
 import { atom } from 'recoil';
 
 const populationStat = atom<DemograhicInfo[]>({
@@ -11,4 +11,9 @@ const houseHoldStat = atom<HouseHoldInfo[]>({
     default: []
 });
 
-export { populationStat, houseHoldStat };
+const houseCountStat = atom<HouseCountInfo[]>({
+    key: 'houseCountStat',
+    default: []
+});
+
+export { populationStat, houseHoldStat, houseCountStat };
