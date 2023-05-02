@@ -24,7 +24,7 @@ const Main = () => {
         injectStyle();
     }, []);
 
-    useEffect(() => {}, [selectedComponent]);
+    useEffect(() => { }, [selectedComponent]);
 
     // FIXME : (전역화 고려)
     function moveErrorPage() {
