@@ -41,7 +41,7 @@ export type HouseHoldInfo = {
 
 export type HouseCountReq = {
     year: number; //기준년도
-    low_search?: string; //행정구역코드에 해당하는 정보만 요청 : 0 1단계 하위 행정구역 정보 요청 : 1 2단계 하위 행정구역 정보 요청 : 2 (default : 1)
+    low_search?: number; //행정구역코드에 해당하는 정보만 요청 : 0 1단계 하위 행정구역 정보 요청 : 1 2단계 하위 행정구역 정보 요청 : 2 (default : 1)
     house_type?: string; //단독주택	01    아파트	02    연립주택	03    다세대주택	04    비거주용 건물(상가,공장,여관 등)내 주택	05    주택이외의 거처	06
     const_year?: string; //건축연도 * 2010년까지 제공, 2015연도는 제공하지 않음
     house_area_cd?: string; //주택면적코드
@@ -57,3 +57,21 @@ export type HouseCountInfo = {
     adm_nm: string; //행정구역명
     house_cnt: string; // 주택수(호)
 };
+
+export type CompanyReq = {
+    year: number;
+    low_search?: number; // 행정구역코드에 해당하는 정보만 요청 : 0 1단계 하위 행정구역 정보 요청 : 1 2단계 하위 행정구역 정보 요청 : 2 (default : 1)
+    class_code?: number; // 산업분류 
+    theme_cd?: number; // 테마코드, 산업체코드는 같이 사용할 수 없음
+} & CommonReq;
+
+export type CompanyRes = {
+    result: CompanyInfo[];
+} & HttpCommonStatus
+
+export type CompanyInfo = {
+    adm_cd: string; // 행정구역코드
+    adm_nm: string; // 행정구역명
+    corp_cnt: string; // 사업체수(개)
+    tot_worker: string; // 종사자수(명)
+}
