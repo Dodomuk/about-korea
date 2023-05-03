@@ -34,6 +34,10 @@ const NavBar = () => {
         </ul>
     );
 
+    function navClick() {
+        setOpenNav(!openNav)
+    }
+
     return (
         <Navbar className="fixed top-0 left-0 right-0 mx-auto max-w-max py-2 px-4 lg:px-8 lg:py-4">
             <div className="hidden lg:block">{navList}</div>
@@ -41,7 +45,7 @@ const NavBar = () => {
                 variant="text"
                 className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
                 ripple={false}
-                onClick={() => setOpenNav(!openNav)}
+                onClick={() => navClick()}
             >
                 {openNav ? (
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" className="h-6 w-6" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -54,7 +58,7 @@ const NavBar = () => {
                 )}
             </IconButton>
             <MobileNav open={openNav}>
-                <div className="container mx-auto">{navList}</div>
+                <div className="container mx-auto" onClick={() => navClick()}>{navList}</div>
             </MobileNav>
         </Navbar>
     );
