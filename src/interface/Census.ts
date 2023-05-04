@@ -61,17 +61,61 @@ export type HouseCountInfo = {
 export type CompanyReq = {
     year: number;
     low_search?: number; // 행정구역코드에 해당하는 정보만 요청 : 0 1단계 하위 행정구역 정보 요청 : 1 2단계 하위 행정구역 정보 요청 : 2 (default : 1)
-    class_code?: number; // 산업분류 
+    class_code?: number; // 산업분류
     theme_cd?: number; // 테마코드, 산업체코드는 같이 사용할 수 없음
 } & CommonReq;
 
 export type CompanyRes = {
     result: CompanyInfo[];
-} & HttpCommonStatus
+} & HttpCommonStatus;
 
 export type CompanyInfo = {
     adm_cd: string; // 행정구역코드
     adm_nm: string; // 행정구역명
     corp_cnt: string; // 사업체수(개)
     tot_worker: string; // 종사자수(명)
-}
+};
+
+export type FarmHouseHoldReq = {
+    year: number;
+    low_search?: number;
+} & CommonReq;
+
+export type FarmHouseHoldRes = {
+    result: FarmHouseHoldInfo[];
+} & HttpCommonStatus;
+
+export type FarmHouseHoldInfo = {
+    adm_cd: string; //행정구역코드
+    adm_nm: string; //행정구역명
+    farm_cnt: string; //농가 수
+    population: string; // 농가인구 수
+    avg_population: string; //농가 평균 인구 수
+};
+
+export type ForestryHouseHoldReq = {
+    year: number;
+    low_search?: number;
+} & CommonReq;
+
+export type ForestryHouseHoldRes = {
+    result: ForestryHouseHoldInfo[];
+} & HttpCommonStatus;
+
+export type ForestryHouseHoldInfo = {
+    adm_cd: string; // 행정구역코드
+    adm_nm: string; // 행정구역명
+    forestry_cnt: string; //	임가수(가구)
+    population: string; // 임가인구수(명)
+    avg_population: string; // 임가평균인구수(명)
+};
+
+export type FisheryHouseHoldReq = {
+    year: number;
+    oga_div: number; //전체 : 0  내수면어가 : 1  해수면어가: 2
+    low_search?: number;
+} & CommonReq;
+
+export type FisheryHouseHoldRes = {
+    result: FisheryHouseHoldInfo[];
+} & HttpCommonStatus;
