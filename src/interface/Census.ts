@@ -93,6 +93,7 @@ export type FarmHouseHoldInfo = {
     avg_population: string; //농가 평균 인구 수
 };
 
+/** 임가 통계 */
 export type ForestryHouseHoldReq = {
     year: number;
     low_search?: number;
@@ -110,6 +111,7 @@ export type ForestryHouseHoldInfo = {
     avg_population: string; // 임가평균인구수(명)
 };
 
+/* 어가 통계  */
 export type FisheryHouseHoldReq = {
     year: number;
     oga_div: number; //전체 : 0  내수면어가 : 1  해수면어가: 2
@@ -119,3 +121,31 @@ export type FisheryHouseHoldReq = {
 export type FisheryHouseHoldRes = {
     result: FisheryHouseHoldInfo[];
 } & HttpCommonStatus;
+
+export type FisheryHouseHoldInfo = {
+    adm_cd: string; // 행정구역코드
+    adm_nm: string; // 행정구역명
+    fishery_cnt: string; // 어가 수
+    population: string; // 어가인구 수
+    avg_population: string; // 어가 평균 인구 수
+};
+
+/* 가구원 통계 */
+export type HouseholdmemberReq = {
+    year: number; // 기준 연도
+    data_type: number; // 농가 : 1  임가: 2  해수면어가: 3 내수면어가: 4
+    low_search?: number;
+    gender?: number; //총합0 남자1 여자2
+    age_from?: number; // 나이 0~150 from
+    age_to?: number; // 나이 0~150 to
+} & CommonReq;
+
+export type HouseholdmemberRes = {
+    result: HouseholdmemberInfo[];
+} & HttpCommonStatus;
+
+export type HouseholdmemberInfo = {
+    adm_cd: string; // 행정구역코드
+    adm_nm: string; // 행정구역명
+    population: string; // 가구원수(명)
+};

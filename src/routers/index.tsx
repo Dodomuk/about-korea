@@ -8,6 +8,7 @@ import ProgressBar from '@components/bridge';
 const Population = React.lazy(() => import('@bridge/census/population'));
 const HouseHold = React.lazy(() => import('@bridge/census/household'));
 const HouseCount = React.lazy(() => import('@bridge/census/house_count'));
+
 export const routes = createBrowserRouter([
     {
         path: '/',
