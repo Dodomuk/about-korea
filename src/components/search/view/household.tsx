@@ -3,7 +3,7 @@ import { HouseHoldReq } from '@/interface/census';
 import { ToastType } from '@/interface/common';
 import { houseHoldStat } from '@/selector/census_selector';
 import { getHouseHolds } from '@/store/census_store';
-import { progressBeforeNav } from '@/utils/everything';
+import { progressBeforeNav, toolBox } from '@/utils/everything';
 import { useNavigate } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
 import SearchBox from '../tools/search_box';
@@ -12,6 +12,8 @@ function HouseHold() {
     const houseHoldStatHandler = useSetRecoilState(houseHoldStat);
 
     const navigate = useNavigate();
+
+    const tools = toolBox['household'];
 
     async function getHouseHold(params: HouseHoldReq) {
         if (params) {
@@ -32,7 +34,7 @@ function HouseHold() {
 
     return (
         <>
-            <SearchBox callFunc={getHouseHold} />
+            <SearchBox callFunc={getHouseHold} tools={tools} />
         </>
     );
 }

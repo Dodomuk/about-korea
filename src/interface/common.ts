@@ -16,6 +16,15 @@ export type ChartData = {
     colors?: string[];
 };
 
+export enum SearchTool {
+    YEAR,
+    GENDER,
+    AGE_TYPE,
+    HOUSEHOLD_TYPE,
+    HOUSE_TYPE, //주택유형
+    HOUSE_AREA_TYPE //주택면적
+}
+
 export enum ToastType {
     INFO,
     SUCCESS,

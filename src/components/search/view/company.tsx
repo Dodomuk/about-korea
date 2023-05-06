@@ -3,7 +3,7 @@ import { CompanyReq } from '@/interface/census';
 import { ToastType } from '@/interface/common';
 import { companyStat } from '@/selector/census_selector';
 import { getCompanys } from '@/store/census_store';
-import { progressBeforeNav } from '@/utils/everything';
+import { progressBeforeNav, toolBox } from '@/utils/everything';
 import { useNavigate } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
 import SearchBox from '../tools/search_box';
@@ -12,6 +12,8 @@ function Company() {
     const companyStatHandler = useSetRecoilState(companyStat);
 
     const navigate = useNavigate();
+
+    const tools = toolBox['company'];
 
     async function getCompany(params: CompanyReq) {
         if (params) {
@@ -27,7 +29,7 @@ function Company() {
 
     return (
         <>
-            <SearchBox callFunc={getCompany} />
+            <SearchBox callFunc={getCompany} tools={tools} />
         </>
     );
 }

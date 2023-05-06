@@ -1,3 +1,4 @@
+import { SearchTool } from '@/interface/common';
 import dayjs from 'dayjs';
 import { NavigateFunction } from 'react-router-dom';
 
@@ -12,6 +13,17 @@ export const contentsList: { [key: string]: { id: string; title: string }[] } = 
         { id: 'fisheryhousehold', title: '어가통계' },
         { id: 'householdmember', title: '가구원통계' }
     ]
+};
+
+export const toolBox: { [key: string]: { essentials: SearchTool[]; options?: SearchTool[] } } = {
+    population: { essentials: [SearchTool.YEAR], options: [SearchTool.GENDER, SearchTool.AGE_TYPE] },
+    household: { essentials: [SearchTool.YEAR], options: [SearchTool.HOUSEHOLD_TYPE] },
+    house: { essentials: [SearchTool.YEAR], options: [SearchTool.HOUSE_TYPE, SearchTool.HOUSE_AREA_TYPE] },
+    company: { essentials: [SearchTool.YEAR] },
+    farmhousehold: { essentials: [SearchTool.YEAR] },
+    forestryhousehold: { essentials: [SearchTool.YEAR] },
+    fisherthousehold: { essentials: [SearchTool.YEAR, SearchTool.OCEAN_SURFACE_TYPE] },
+    householdmember: { essentials: [SearchTool.YEAR, SearchTool.DATA_TYPE], options: [SearchTool.GENDER] }
 };
 
 export const yearList = () => {

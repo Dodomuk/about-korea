@@ -8,8 +8,15 @@ import { Button, Typography } from '@material-tailwind/react';
 import { useRecoilValue } from 'recoil';
 import { ToastContainer } from 'react-toastify';
 import YearBox from './year_box';
+import { SearchTool } from '@/interface/common';
 
-const SearchBox = (props: { callFunc(params: any): void }) => {
+const SearchBox = (props: {
+    callFunc(params: any): void;
+    tools: {
+        essentials: SearchTool[];
+        options?: SearchTool[] | undefined;
+    };
+}) => {
     const key = useRecoilValue(accessKey);
     const [selectedYear, setSelectedYear] = useState(0);
 
@@ -37,7 +44,12 @@ const SearchBox = (props: { callFunc(params: any): void }) => {
             </Typography> */}
             <form className="box-form mt-8 mb-2 xl:w-96 max-w-screen-lg">
                 <YearBox yearSelect={yearSelect} />
-                <Button color="white" variant="filled" className="block text-center mt-4 font-bold text-gray-800 rounded-md" onClick={() => getViewModel()}>
+                <Button
+                    color="white"
+                    variant="filled"
+                    className="block text-center mt-4 font-bold text-gray-800 rounded-md"
+                    onClick={() => getViewModel()}
+                >
                     검색
                 </Button>
             </form>

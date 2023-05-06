@@ -3,7 +3,7 @@ import { HouseCountReq } from '@/interface/census';
 import { ToastType } from '@/interface/common';
 import { houseCountStat } from '@/selector/census_selector';
 import { getHouseCounts } from '@/store/census_store';
-import { progressBeforeNav } from '@/utils/everything';
+import { progressBeforeNav, toolBox } from '@/utils/everything';
 import { useNavigate } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
 import SearchBox from '../tools/search_box';
@@ -12,6 +12,8 @@ function HouseCount() {
     const houseCountStatHandler = useSetRecoilState(houseCountStat);
 
     const navigate = useNavigate();
+
+    const tools = toolBox['house'];
 
     async function getHouseCount(params: HouseCountReq) {
         if (params) {
@@ -32,7 +34,7 @@ function HouseCount() {
 
     return (
         <>
-            <SearchBox callFunc={getHouseCount} />
+            <SearchBox callFunc={getHouseCount} tools={tools} />
         </>
     );
 }

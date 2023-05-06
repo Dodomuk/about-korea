@@ -3,7 +3,7 @@ import { FarmHouseHoldReq } from '@/interface/census';
 import { ToastType } from '@/interface/common';
 import { farmHouseHoldStat } from '@/selector/census_selector';
 import { getFarmHouseHolds } from '@/store/census_store';
-import { progressBeforeNav } from '@/utils/everything';
+import { progressBeforeNav, toolBox } from '@/utils/everything';
 import { useNavigate } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
 import SearchBox from '../tools/search_box';
@@ -12,6 +12,8 @@ function FarmHouseHold() {
     const farmHouseHoldStatHandler = useSetRecoilState(farmHouseHoldStat);
 
     const navigate = useNavigate();
+
+    const tools = toolBox['farmhousehold'];
 
     async function getFarmHouseHold(params: FarmHouseHoldReq) {
         if (params) {
@@ -27,7 +29,7 @@ function FarmHouseHold() {
 
     return (
         <>
-            <SearchBox callFunc={getFarmHouseHold} />
+            <SearchBox callFunc={getFarmHouseHold} tools={tools} />
         </>
     );
 }

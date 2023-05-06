@@ -3,7 +3,7 @@ import { getDemographics } from '@/store/census_store';
 import { DemographicsReq } from '@/interface/census';
 import { useSetRecoilState } from 'recoil';
 import { populationStat } from '@/selector/census_selector';
-import { progressBeforeNav } from '@/utils/everything';
+import { progressBeforeNav, toolBox } from '@/utils/everything';
 import { useNavigate } from 'react-router-dom';
 import SearchBox from '../tools/search_box';
 import CustomizeToast from '@/components/common/customize-toast';
@@ -13,6 +13,8 @@ function Population() {
     const populationStatHandler = useSetRecoilState(populationStat);
 
     const navigate = useNavigate();
+
+    const tools = toolBox['population'];
 
     async function getPopulation(params: DemographicsReq) {
         // 년도를 선택한 경우
@@ -34,7 +36,7 @@ function Population() {
 
     return (
         <>
-            <SearchBox callFunc={getPopulation} />
+            <SearchBox callFunc={getPopulation} tools={tools} />
         </>
     );
 }
