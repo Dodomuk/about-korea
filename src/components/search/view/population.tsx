@@ -21,7 +21,8 @@ function Population() {
         if (params.year) {
             const demographicsReqParam: DemographicsReq = {
                 accessToken: params.accessToken,
-                year: params.year
+                year: params.year,
+                gender: params.gender ?? 0
             };
 
             await getDemographics(demographicsReqParam).then((res) => {

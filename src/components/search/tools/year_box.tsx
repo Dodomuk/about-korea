@@ -6,7 +6,7 @@ function YearBox(props: { yearSelect(year: number): void }) {
 
     return (
         <div className="xl:w-96 pl-2">
-            <Select className="hover:border-green-500" label="검색할 년도" color="green" success>
+            <Select className="hover:border-green-500" label="연도" color="green" success>
                 {searchYearList.map((year) => (
                     <Option key={`year_${year}`} onClick={() => props.yearSelect(year)}>
                         {year}
