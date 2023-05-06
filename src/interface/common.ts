@@ -22,7 +22,9 @@ export enum SearchTool {
     AGE_TYPE,
     HOUSEHOLD_TYPE,
     HOUSE_TYPE, //주택유형
-    HOUSE_AREA_TYPE //주택면적
+    HOUSE_AREA_TYPE, //주택면적
+    DATA_TYPE, //가구타입
+    OCEAN_SURFACE_TYPE //어가구분
 }
 
 export enum ToastType {
