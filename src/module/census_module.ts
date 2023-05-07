@@ -16,7 +16,7 @@ import {
     HouseholdmemberInfo,
     HouseholdmemberReq,
     HouseHoldReq
-} from '@interface/census';
+} from '@/interface/census';
 
 export async function getDemographicsInfo(param: DemographicsReq) {
     let result: DemograhicInfo[] = [];

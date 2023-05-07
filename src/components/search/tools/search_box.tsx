@@ -7,9 +7,10 @@ import { accessKey } from '@/selector/sgis_selector';
 import { Button, Typography } from '@material-tailwind/react';
 import { useRecoilValue } from 'recoil';
 import { ToastContainer } from 'react-toastify';
-import YearBox from './year_box';
 import { SearchTool } from '@/interface/common';
-import GenderBox from './Gender_box';
+
+import YearBox from './year_box';
+import GenderBox from './gender_box';
 
 const SearchBox = (props: {
     callFunc(params: any): void;

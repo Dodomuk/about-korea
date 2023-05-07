@@ -1,4 +1,4 @@
-import { yearList } from '@/utils/everything';
+import { yearList } from '@/utils/sgis_kit';
 import { Option, Select } from '@material-tailwind/react';
 
 function YearBox(props: { yearSelect(year: number): void }) {

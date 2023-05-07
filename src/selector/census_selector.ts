@@ -7,7 +7,7 @@ import {
     HouseCountInfo,
     HouseHoldInfo,
     HouseholdmemberInfo
-} from '@interface/census';
+} from '@/interface/census';
 import { atom } from 'recoil';
 
 const populationStat = atom<DemograhicInfo[]>({

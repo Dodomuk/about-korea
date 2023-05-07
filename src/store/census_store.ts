@@ -7,7 +7,7 @@ import {
     HouseCountReq,
     HouseholdmemberReq,
     HouseHoldReq
-} from '@interface/census';
+} from '@/interface/census';
 import {
     getCompanyInfo,
     getDemographicsInfo,
