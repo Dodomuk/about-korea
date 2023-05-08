@@ -11,11 +11,11 @@ import NavBar from '@common/nav-bar';
 import Population from '@components/search/view/population';
 import HouseHold from '@components/search/view/household';
 import HouseCount from '@components/search/view/house_count';
-import Company from './search/view/Company';
-import FarmHouseHold from './search/view/Farm_house_hold';
-import ForestryHouseHold from './search/view/forestry_house_hold';
-import FisheryHouseHold from './search/view/fishery_house_hold';
-import HouseHoldMember from './search/view/house_hold_member';
+import Company from '@components/search/view/company';
+import FarmHouseHold from '@components/search/view/farm_house_hold';
+import ForestryHouseHold from '@components/search/view/forestry_house_hold';
+import FisheryHouseHold from '@components/search/view/fishery_house_hold';
+import HouseHoldMember from '@components/search/view/house_hold_member';
 
 const Main = () => {
     const keyHandler = useSetRecoilState(accessKey);
@@ -30,7 +30,7 @@ const Main = () => {
         injectStyle();
     }, []);
 
-    useEffect(() => {}, [selectedComponent]);
+    useEffect(() => { }, [selectedComponent]);
 
     // FIXME : (전역화 고려)
     function moveErrorPage() {
