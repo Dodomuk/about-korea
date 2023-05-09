@@ -76,9 +76,9 @@ const SearchBox = (props: {
 
         const jsxList: JSX.Element[] = [];
 
-        const genderBoxContainer = <GenderBox genderSelect={genderSelect} key={'gender'} />;
-        const agePoolBoxContainer = <AgePoolBox agePoolSelect={agePoolSelect} key={'agePool'} />;
-        const houseHoldTypeBoxContainer = <HouseHoldTypeBox houseHoldTypeSelect={houseHoldTypeSelect} key={'houseHoldType'} />
+        const genderBoxContainer = <div className="mt-4"><GenderBox genderSelect={genderSelect} key={'gender'} /></div>
+        const agePoolBoxContainer = <div className="mt-4"><AgePoolBox agePoolSelect={agePoolSelect} key={'agePool'} /></div>
+        const houseHoldTypeBoxContainer = <div className="mt-4"><HouseHoldTypeBox houseHoldTypeSelect={houseHoldTypeSelect} key={'houseHoldType'} /></div>
 
         options.forEach(option => {
             switch (option) {
@@ -97,7 +97,7 @@ const SearchBox = (props: {
             }
         })
 
-        return <div className="mt-4">{jsxList.map((x) => x)}</div>;
+        return <div>{jsxList.map((x) => x)}</div>;
     }
 
     async function getViewModel() {

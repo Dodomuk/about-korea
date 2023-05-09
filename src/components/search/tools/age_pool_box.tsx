@@ -8,7 +8,7 @@ function AgePoolBox(props: { agePoolSelect(agePool: string): void }) {
 
     return (
         <div className="xl:w-96 pl-2">
-            <Select className="hover:border-green-500" label="성별" color="green" success>
+            <Select className="hover:border-green-500" label="연령" color="green" success>
                 {Object.keys(AGEPOOL_KIT).map((agePool) => (
                     <Option key={`age_pool_${agePool}`} onClick={() => callParentFunc(agePool)}>
                         {agePool}
