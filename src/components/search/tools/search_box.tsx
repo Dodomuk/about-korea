@@ -11,6 +11,8 @@ import { SearchTool } from '@/interface/common';
 
 import YearBox from './year_box';
 import GenderBox from './gender_box';
+import AgePoolBox from './age_pool_box';
+import HouseHoldTypeBox from './household_type_box';
 
 const SearchBox = (props: {
     callFunc(params: any): void;
@@ -22,6 +24,8 @@ const SearchBox = (props: {
     const key = useRecoilValue(accessKey);
     const [selectedYear, setSelectedYear] = useState(0);
     const [selectedGender, setSelectedGender] = useState(0);
+    const [selectedAgePool, setSelectedAgePool] = useState('');
+    const [selectedHouseHoldType, setSelectedHouseHoldType] = useState('')
     const optionMap = new Map();
 
     function yearSelect(year: number) {
@@ -34,34 +38,64 @@ const SearchBox = (props: {
         setSelectedGender(gender);
     }
 
+    function agePoolSelect(agePool: string) {
+        optionMap.set('agePool', agePool);
+        setSelectedAgePool(agePool);
+    }
+
+    function houseHoldTypeSelect(houseHoldType: string) {
+        optionMap.set('houseHoldType', houseHoldType)
+        setSelectedHouseHoldType(houseHoldType)
+    }
+
     // 필수 입력 값
     function EssentialTools() {
-        const essentials = props.tools.essentials;
+        const essentials = props.tools.essentials || [];
 
         const jsxList: JSX.Element[] = [];
 
-        const YearBoxContainer = <YearBox yearSelect={yearSelect} key={'year'} />;
+        const yearBoxContainer = <YearBox yearSelect={yearSelect} key={'year'} />;
+        // const oceanSerfaceTypeContainer
+        // const dataTypeContainer
 
-        if (essentials.includes(SearchTool.YEAR)) {
-            jsxList.push(YearBoxContainer);
-        }
+        essentials.forEach(essential => {
+            switch (essential) {
+                case SearchTool.YEAR:
+                    jsxList.push(yearBoxContainer);
+                    break;
+            }
+
+        })
 
         return <>{jsxList.map((x) => x)}</>;
     }
 
     // 선택 입력 값
     function OptionalTools() {
-        const options = props.tools.options;
+        const options = props.tools.options || [];
 
         const jsxList: JSX.Element[] = [];
 
-        const GenderBoxContainer = <GenderBox genderSelect={genderSelect} key={'gender'} />;
+        const genderBoxContainer = <GenderBox genderSelect={genderSelect} key={'gender'} />;
+        const agePoolBoxContainer = <AgePoolBox agePoolSelect={agePoolSelect} key={'agePool'} />;
+        const houseHoldTypeBoxContainer = <HouseHoldTypeBox houseHoldTypeSelect={houseHoldTypeSelect} key={'houseHoldType'} />
 
-        if (options) {
-            if (options.includes(SearchTool.GENDER)) {
-                jsxList.push(GenderBoxContainer);
+        options.forEach(option => {
+            switch (option) {
+                case SearchTool.GENDER: {
+                    jsxList.push(genderBoxContainer);
+                    break;
+                }
+                case SearchTool.AGE_TYPE: {
+                    jsxList.push(agePoolBoxContainer);
+                    break;
+                }
+                case SearchTool.HOUSEHOLD_TYPE: {
+                    jsxList.push(houseHoldTypeBoxContainer);
+                    break;
+                }
             }
-        }
+        })
 
         return <div className="mt-4">{jsxList.map((x) => x)}</div>;
     }

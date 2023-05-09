@@ -7,7 +7,7 @@ import { progressBeforeNav } from '@/utils/everything';
 import { toolBox } from '@/utils/sgis_kit';
 import { useNavigate } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
-import SearchBox from '../tools/search_box';
+import SearchBox from '@components/search/tools/search_box';
 
 function Company() {
     const companyStatHandler = useSetRecoilState(companyStat);
