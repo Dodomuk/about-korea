@@ -9,7 +9,7 @@ export const toolBox: { [key: string]: { essentials: SearchTool[]; options?: Sea
     farmhousehold: { essentials: [SearchTool.YEAR] },
     forestryhousehold: { essentials: [SearchTool.YEAR] },
     fisherthousehold: { essentials: [SearchTool.YEAR, SearchTool.OCEAN_SURFACE_TYPE] },
-    householdmember: { essentials: [SearchTool.YEAR, SearchTool.DATA_TYPE], options: [SearchTool.GENDER] }
+    householdmember: { essentials: [SearchTool.YEAR, SearchTool.INDUSTRY_TYPE], options: [SearchTool.GENDER] }
 };
 
 export const yearList = () => {
@@ -80,7 +80,7 @@ export const OCEAN_SURFACE_TYPE_KIT: { [key: string]: number } = {
     해수면어가: 2
 };
 
-export const DATA_TYPE_KIT: { [key: string]: number } = {
+export const INDUSTRY_TYPE_KIT: { [key: string]: number } = {
     농가: 1,
     임가: 2,
     해수면어가: 3,
