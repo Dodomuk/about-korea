@@ -9,10 +9,10 @@ import { useRecoilValue } from 'recoil';
 import { ToastContainer } from 'react-toastify';
 import { SearchTool } from '@/interface/common';
 
-import YearBox from './year_box';
-import GenderBox from './gender_box';
-import AgePoolBox from './age_pool_box';
-import HouseHoldTypeBox from './household_type_box';
+import YearBox from '@components/search/tools/boxs/year_box';
+import GenderBox from '@components/search/tools/boxs/gender_box';
+import AgePoolBox from '@components/search/tools/boxs/age_pool_box';
+import HouseHoldTypeBox from '@components/search/tools/boxs/household_type_box';
 
 const SearchBox = (props: {
     callFunc(params: any): void;
@@ -92,7 +92,7 @@ const SearchBox = (props: {
                     break;
                 }
             }
-            if (jsxContainer) jsxList.push(<div className="mt-4">jsxContainer</div>);
+            if (jsxContainer) jsxList.push(<div className="mt-4">{jsxContainer}</div>);
         });
 
         return <div>{jsxList.map((x) => x)}</div>;
