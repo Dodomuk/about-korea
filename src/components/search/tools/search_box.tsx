@@ -92,7 +92,7 @@ const SearchBox = (props: {
                     break;
                 }
             }
-            if (jsxContainer) jsxList.push(<div className="mt-4">{jsxContainer}</div>);
+            if (jsxContainer) jsxList.push(<div className="container-box mt-4">{jsxContainer}</div>);
         });
 
         return <div>{jsxList.map((x) => x)}</div>;
