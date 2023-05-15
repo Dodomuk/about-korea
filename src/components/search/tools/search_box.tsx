@@ -13,6 +13,10 @@ import YearBox from '@components/search/tools/boxs/year_box';
 import GenderBox from '@components/search/tools/boxs/gender_box';
 import AgePoolBox from '@components/search/tools/boxs/age_pool_box';
 import HouseHoldTypeBox from '@components/search/tools/boxs/household_type_box';
+import OceanSurfaceTypeBox from './boxs/ocean_type_box';
+import IndustryTypeBox from './boxs/industry_type_box';
+import HouseTypeBox from './boxs/house_type_box';
+import HouseAreaTypeBox from './boxs/house_area_type';
 
 const SearchBox = (props: {
     callFunc(params: any): void;
@@ -25,7 +29,12 @@ const SearchBox = (props: {
     const [selectedYear, setSelectedYear] = useState(0);
     const [selectedGender, setSelectedGender] = useState(0);
     const [selectedAgePool, setSelectedAgePool] = useState('');
+    const [selectedHouseType, setSelectedHouseType] = useState('');
     const [selectedHouseHoldType, setSelectedHouseHoldType] = useState('');
+    const [selectedHouseAreaType, setSelectedHouseAreaType] = useState('');
+    const [selectedOceanSurfaceType, setSelectedOceanSurfaceType] = useState(0);
+    const [selectedIndustryType, setSelectedIndustryType] = useState(0);
+
     const optionMap = new Map();
 
     function yearSelect(year: number) {
@@ -40,8 +49,24 @@ const SearchBox = (props: {
         setSelectedAgePool(agePool);
     }
 
+    function houseTypeSelect(houseType: string) {
+        setSelectedHouseType(houseType);
+    }
+
     function houseHoldTypeSelect(houseHoldType: string) {
         setSelectedHouseHoldType(houseHoldType);
+    }
+
+    function houseAreaTypeSelect(houseAreaType: string) {
+        setSelectedHouseAreaType(houseAreaType);
+    }
+
+    function oceanSurfaceSelect(oceanSurfaceType: number) {
+        setSelectedOceanSurfaceType(oceanSurfaceType);
+    }
+
+    function industryTypeSelect(industryType: number) {
+        setSelectedIndustryType(industryType);
     }
 
     // 필수 입력 값
@@ -50,19 +75,33 @@ const SearchBox = (props: {
 
         const jsxList: JSX.Element[] = [];
 
-        const yearBoxContainer = <YearBox yearSelect={yearSelect} key={'year'} />;
-        // const oceanSerfaceTypeContainer
-        // const dataTypeContainer
+        const yearBoxContainer = <YearBox yearSelect={yearSelect} key="year" />;
+        const oceanSerfaceTypeContainer = <OceanSurfaceTypeBox oceanSurfaceTypeSelect={oceanSurfaceSelect} key="oceanSurface" />;
+        const industryTypeContainer = <IndustryTypeBox industryTypeSelect={industryTypeSelect} key="industry" />;
 
         essentials.forEach((essential) => {
             switch (essential) {
                 case SearchTool.YEAR:
                     jsxList.push(yearBoxContainer);
                     break;
+                case SearchTool.OCEAN_SURFACE_TYPE:
+                    jsxList.push(oceanSerfaceTypeContainer);
+                    break;
+                case SearchTool.INDUSTRY_TYPE:
+                    jsxList.push(industryTypeContainer);
+                    break;
             }
         });
 
-        return <>{jsxList.map((x) => x)}</>;
+        return (
+            <>
+                {jsxList.map((x, index) => (
+                    <div className="container-box mt-4" key={`container_${index}`}>
+                        {x}
+                    </div>
+                ))}
+            </>
+        );
     }
 
     // 선택 입력 값
@@ -71,31 +110,47 @@ const SearchBox = (props: {
 
         const jsxList: JSX.Element[] = [];
 
-        const genderBoxContainer = <GenderBox genderSelect={genderSelect} key={'gender'} />;
-        const agePoolBoxContainer = <AgePoolBox agePoolSelect={agePoolSelect} key={'agePool'} />;
-        const houseHoldTypeBoxContainer = <HouseHoldTypeBox houseHoldTypeSelect={houseHoldTypeSelect} key={'houseHoldType'} />;
-        // const houseTypeBoxContainer;
+        const genderBoxContainer = <GenderBox genderSelect={genderSelect} key="gender" />;
+        const agePoolBoxContainer = <AgePoolBox agePoolSelect={agePoolSelect} key="agePool" />;
+        const houseHoldTypeBoxContainer = <HouseHoldTypeBox houseHoldTypeSelect={houseHoldTypeSelect} key="houseHoldType" />;
+        const houseTypeBoxContainer = <HouseTypeBox houseTypeSelect={houseTypeSelect} key="houseType" />;
+        const houseAreaTypeBoxContainer = <HouseAreaTypeBox houseAreaTypeSelect={houseAreaTypeSelect} key="houseAreaType" />;
 
         options.forEach((option) => {
             let jsxContainer;
             switch (option) {
                 case SearchTool.GENDER: {
-                    jsxContainer = genderBoxContainer;
+                    jsxList.push(genderBoxContainer);
                     break;
                 }
                 case SearchTool.AGE_TYPE: {
-                    jsxContainer = agePoolBoxContainer;
+                    jsxList.push(agePoolBoxContainer);
                     break;
                 }
                 case SearchTool.HOUSEHOLD_TYPE: {
-                    jsxContainer = houseHoldTypeBoxContainer;
+                    jsxList.push(houseHoldTypeBoxContainer);
+                    break;
+                }
+                case SearchTool.HOUSE_TYPE: {
+                    jsxList.push(houseTypeBoxContainer);
+                    break;
+                }
+                case SearchTool.HOUSE_AREA_TYPE: {
+                    jsxList.push(houseAreaTypeBoxContainer);
                     break;
                 }
             }
-            if (jsxContainer) jsxList.push(<div className="container-box mt-4">{jsxContainer}</div>);
         });
 
-        return <div>{jsxList.map((x) => x)}</div>;
+        return (
+            <>
+                {jsxList.map((x, index) => (
+                    <div className="container-box mt-4" key={`container_${index}`}>
+                        {x}
+                    </div>
+                ))}
+            </>
+        );
     }
 
     async function getViewModel() {
@@ -104,8 +159,12 @@ const SearchBox = (props: {
         // 요구사항에 맞는 param 세팅
         if (selectedYear) optionMap.set('year', selectedYear);
         if (selectedGender) optionMap.set('gender', selectedGender);
-        if (selectedAgePool) optionMap.set('agePool', selectedAgePool);
-        if (selectedHouseHoldType) optionMap.set('houseHoldType', selectedHouseHoldType);
+        if (selectedAgePool) optionMap.set('age_type', selectedAgePool);
+        if (selectedHouseHoldType) optionMap.set('household_type', selectedHouseHoldType);
+        if (selectedHouseType) optionMap.set('house_type', selectedHouseType);
+        if (selectedHouseAreaType) optionMap.set('house_area_cd', selectedHouseAreaType);
+        if (selectedOceanSurfaceType) optionMap.set('oga_div', selectedOceanSurfaceType);
+        if (selectedIndustryType) optionMap.set('data_type', selectedIndustryType);
 
         const param = Object.fromEntries(optionMap);
 

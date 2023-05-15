@@ -1,7 +1,7 @@
 import { INDUSTRY_TYPE_KIT } from '@/utils/sgis_kit';
 import { Option, Select } from '@material-tailwind/react';
 
-function IndustryType(props: { industryTypeSelect(industryType: number): void }) {
+function IndustryTypeBox(props: { industryTypeSelect(industryType: number): void }) {
     function callParentFunc(industryType: string) {
         props.industryTypeSelect(INDUSTRY_TYPE_KIT[industryType] ?? 0);
     }
@@ -18,3 +18,5 @@ function IndustryType(props: { industryTypeSelect(industryType: number): void })
         </div>
     );
 }
+
+export default IndustryTypeBox;
