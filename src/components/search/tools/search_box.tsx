@@ -153,18 +153,55 @@ const SearchBox = (props: {
         );
     }
 
-    async function getViewModel() {
+    // 로직 개선 필요함
+    function optionMapSetting() {
         // 기본 access key 세팅
         optionMap.set('accessToken', key);
+
         // 요구사항에 맞는 param 세팅
-        if (selectedYear) optionMap.set('year', selectedYear);
-        if (selectedGender) optionMap.set('gender', selectedGender);
-        if (selectedAgePool) optionMap.set('age_type', selectedAgePool);
-        if (selectedHouseHoldType) optionMap.set('household_type', selectedHouseHoldType);
-        if (selectedHouseType) optionMap.set('house_type', selectedHouseType);
-        if (selectedHouseAreaType) optionMap.set('house_area_cd', selectedHouseAreaType);
-        if (selectedOceanSurfaceType) optionMap.set('oga_div', selectedOceanSurfaceType);
-        if (selectedIndustryType) optionMap.set('data_type', selectedIndustryType);
+        const essentials = props.tools.essentials;
+        const options = props.tools.options || [];
+        essentials.forEach((essential) => {
+            switch (essential) {
+                case SearchTool.YEAR:
+                    optionMap.set('year', selectedYear);
+                    break;
+                case SearchTool.OCEAN_SURFACE_TYPE:
+                    optionMap.set('oga_div', selectedOceanSurfaceType);
+                    break;
+                case SearchTool.INDUSTRY_TYPE:
+                    optionMap.set('data_type', selectedIndustryType);
+                    break;
+            }
+        });
+        options.forEach((option) => {
+            switch (option) {
+                case SearchTool.GENDER: {
+                    optionMap.set('gender', selectedGender);
+                    break;
+                }
+                case SearchTool.AGE_TYPE: {
+                    optionMap.set('age_type', selectedAgePool);
+                    break;
+                }
+                case SearchTool.HOUSEHOLD_TYPE: {
+                    optionMap.set('household_type', selectedHouseHoldType);
+                    break;
+                }
+                case SearchTool.HOUSE_TYPE: {
+                    optionMap.set('house_type', selectedHouseType);
+                    break;
+                }
+                case SearchTool.HOUSE_AREA_TYPE: {
+                    optionMap.set('house_area_cd', selectedHouseAreaType);
+                    break;
+                }
+            }
+        });
+    }
+
+    async function getViewModel() {
+        optionMapSetting();
 
         const param = Object.fromEntries(optionMap);
 

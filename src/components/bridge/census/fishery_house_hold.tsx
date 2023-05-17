@@ -1,4 +1,4 @@
-import PieChart from '@/components/chart/pie_chart';
+import PieChart from '@components/chart/pie_chart';
 import { ChartData } from '@/interface/common';
 import { fisheryHouseHoldStat } from '@/selector/census_selector';
 import { useRecoilValue } from 'recoil';

@@ -16,6 +16,7 @@ import FarmHouseHold from '@components/search/view/farm_house_hold';
 import ForestryHouseHold from '@components/search/view/forestry_house_hold';
 import FisheryHouseHold from '@components/search/view/fishery_house_hold';
 import HouseHoldMember from '@components/search/view/house_hold_member';
+import LoadingSpinner from '@components/common/loading_spinner';
 
 const Main = () => {
     const keyHandler = useSetRecoilState(accessKey);
@@ -30,7 +31,7 @@ const Main = () => {
         injectStyle();
     }, []);
 
-    useEffect(() => {}, [selectedComponent]);
+    useEffect(() => { }, [selectedComponent]);
 
     // FIXME : (전역화 고려)
     function moveErrorPage() {
@@ -57,7 +58,7 @@ const Main = () => {
             case '가구원':
                 return <HouseHoldMember />;
             default:
-                return <div>헤에에</div>;
+                return <div><LoadingSpinner /></div>;
         }
     }
 

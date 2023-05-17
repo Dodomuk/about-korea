@@ -8,11 +8,11 @@ export const contentsList: { [key: string]: { id: string; title: string }[] } = 
         { id: 'company', title: '사업체통계' },
         { id: 'farmhousehold', title: '농가통계' },
         { id: 'forestryhousehold', title: '임가통계' },
-        { id: 'fisheryhousehold', title: '어가통계' },
-        { id: 'householdmember', title: '가구원통계' }
+        { id: 'fisheryhousehold', title: '어가통계' }
+        // { id: 'householdmember', title: '가구원통계' } // SGIS에서 가구원 통계에 대한 값을 주지 않음
     ]
 };
-
+//
 //차트에 랜덤한 색상 부여
 export function chartSketch(count: number) {
     const sketchArr: string[] = [];
