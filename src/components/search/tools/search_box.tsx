@@ -17,7 +17,7 @@ import OceanSurfaceTypeBox from './boxs/ocean_type_box';
 import IndustryTypeBox from './boxs/industry_type_box';
 import HouseTypeBox from './boxs/house_type_box';
 import HouseAreaTypeBox from './boxs/house_area_type';
-//
+
 const SearchBox = (props: {
     callFunc(params: any): void;
     tools: {
